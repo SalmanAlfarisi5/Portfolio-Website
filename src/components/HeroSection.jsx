@@ -44,7 +44,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              I build <span className="gradient-text">creative</span> digital experiences
+              I build <span className="gradient-text">intelligent</span> machine learning applications
             </motion.h1>
             
             <motion.p 
@@ -53,7 +53,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              A passionate developer focused on creating intuitive and engaging web applications with modern technologies and clean design.
+              A passionate data scientist focused on crafting scalable machine-learning pipelines and deriving actionable insights from complex data.
             </motion.p>
             
             <motion.div 
@@ -89,7 +89,7 @@ const HeroSection = () => {
                 <img  
                   alt="Professional developer portrait" 
                   className="w-full h-full object-cover rounded-[calc(var(--radius)-3px)]"
-                 src="https://images.unsplash.com/photo-1666892666066-abe5c4865e9c" />
+                 src="/public/Hero.png" />
               </div>
             </div>
           </motion.div>

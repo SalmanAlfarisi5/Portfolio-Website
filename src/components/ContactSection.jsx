@@ -40,6 +40,11 @@ export default function ContactSection() {
         setResult('Form Submitted Successfully');
         e.target.reset();
         setFormData({ name: '', email: '', subject: '', message: '' });
+        toast({
+          title: 'Message sent!',
+          description: 'Thank you for your message. I\'ll get back to you soon.',
+          duration: 5000,
+        });
       } else {
         setResult(json.message || 'Submission failed');
       }

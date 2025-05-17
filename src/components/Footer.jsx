@@ -7,10 +7,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
-    { icon: <Github size={20} />, href: 'https://github.com', label: 'GitHub' },
-    { icon: <Linkedin size={20} />, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <Twitter size={20} />, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: <Mail size={20} />, href: 'mailto:contact@example.com', label: 'Email' },
+    { icon: <Github size={20} />, href: 'https://github.com/SalmanAlfarisi5', label: 'GitHub' },
+    { icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/in/salmanalfarisi5', label: 'LinkedIn' },
+    { icon: <Mail size={20} />, href: 'mailto:salman26080@gmail.com', label: 'Email' },
   ];
 
   return (
@@ -20,7 +19,7 @@ const Footer = () => {
           <div className="mb-4 md:mb-0">
             <span className="text-lg font-semibold gradient-text">Portfolio</span>
             <p className="text-sm text-muted-foreground mt-2">
-              Crafting digital experiences with passion and precision
+              Modeling tomorrow's insights today.
             </p>
           </div>
           
