@@ -5,7 +5,7 @@ import { Send, Mail, MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
-const ContactSection = () => {
+export default function ContactSection() {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -14,33 +14,41 @@ const ContactSection = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [result, setResult] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-        duration: 5000,
+    setResult('Sending…');                       
+
+    const data = new FormData(e.target);
+    data.append('access_key', 'f7d7ef7a-524d-4308-97c8-561b559bf08f');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
       });
-      
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-      
+      const json = await res.json();
+
+      if (json.success) {
+        setResult('Form Submitted Successfully');
+        e.target.reset();
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setResult(json.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.error(err);
+      setResult('An error occurred. Please try again.');
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [
@@ -206,4 +214,3 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
