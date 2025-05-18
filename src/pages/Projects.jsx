@@ -12,40 +12,40 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
+      title: 'Tweets Classification',
       description: 'A full-featured online store with product management, cart functionality, and payment processing.',
       image: 'e-commerce-dashboard',
-      category: 'web',
+      category: 'ML',
       tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       demoLink: '#',
       codeLink: '#',
     },
     {
       id: 2,
-      title: 'Task Management App',
+      title: 'Recommendation System',
       description: 'A productivity application for managing tasks, projects, and team collaboration.',
       image: 'task-management-app',
-      category: 'app',
+      category: 'ML',
       tags: ['React', 'Firebase', 'Tailwind CSS'],
       demoLink: '#',
       codeLink: '#',
     },
     {
       id: 3,
-      title: 'Portfolio Website',
+      title: 'Stock Price Prediction',
       description: 'A responsive portfolio website showcasing projects and skills with a modern design.',
       image: 'portfolio-website',
-      category: 'web',
+      category: 'ML',
       tags: ['React', 'Framer Motion', 'Tailwind CSS'],
       demoLink: '#',
       codeLink: '#',
     },
     {
       id: 4,
-      title: 'Weather Dashboard',
+      title: 'Website Development',
       description: 'Real-time weather information with forecasts, maps, and location-based data.',
       image: 'weather-dashboard',
-      category: 'app',
+      category: 'web',
       tags: ['JavaScript', 'Weather API', 'Chart.js'],
       demoLink: '#',
       codeLink: '#',
@@ -140,7 +140,7 @@ const Projects = () => {
         
         <div className="flex justify-center mb-12">
           <div className="flex flex-wrap justify-center gap-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'web', 'app', 'design'].map((filter) => (
+            {['all', 'ML', 'web'].map((filter) => (
               <Button
                 key={filter}
                 variant={activeFilter === filter ? 'default' : 'ghost'}
