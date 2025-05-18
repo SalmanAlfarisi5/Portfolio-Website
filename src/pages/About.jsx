@@ -40,7 +40,10 @@ const About = () => {
             >
               <h2 className="text-3xl font-bold mb-6">My Philosophy</h2>
               <p className="text-muted-foreground mb-4">
-                I believe that great software is not just about code, but about creating meaningful experiences that solve real problems. My approach combines technical expertise with a deep understanding of user needs.
+                I believe that impactful data-driven solutions go beyond algorithms—
+                they solve real problems and empower users with actionable insights.
+                My approach blends deep technical expertise in machine learning with 
+                a solid grounding in user needs and business context.
               </p>
               <p className="text-muted-foreground mb-4">
                 Every project I undertake is guided by these core principles:
@@ -48,7 +51,7 @@ const About = () => {
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>User-centered design that prioritizes intuitive experiences</span>
+                  <span>Establish end-to-end, repeatable ML pipelines with clear versioning, testing, and orchestration</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
