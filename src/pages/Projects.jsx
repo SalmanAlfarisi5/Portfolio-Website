@@ -13,7 +13,7 @@ const Projects = () => {
     {
       id: 1,
       title: 'Tweets Classification',
-      description: 'A full-featured online store with product management, cart functionality, and payment processing.',
+      description: 'Implemented word embeddings + text classification model and Image classification model using CNN.',
       image: 'e-commerce-dashboard',
       category: 'ML',
       tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
@@ -52,40 +52,40 @@ const Projects = () => {
     },
     {
       id: 5,
-      title: 'Blog Platform',
+      title: 'Quant Project',
       description: 'A content management system for creating and managing blog posts with user authentication.',
       image: 'blog-platform',
-      category: 'web',
+      category: 'ML',
       tags: ['React', 'Node.js', 'Express', 'MongoDB'],
       demoLink: '#',
       codeLink: '#',
     },
     {
       id: 6,
-      title: 'Fitness Tracker',
+      title: 'Data Analysis and Visualization',
       description: 'An application for tracking workouts, progress, and health metrics with data visualization.',
       image: 'fitness-tracker',
-      category: 'app',
+      category: 'Analysis',
       tags: ['React Native', 'Firebase', 'Chart.js'],
       demoLink: '#',
       codeLink: '#',
     },
     {
       id: 7,
-      title: 'Restaurant Website',
+      title: 'US Diabetes Prediction',
       description: 'A website for a restaurant with menu, reservation system, and online ordering.',
       image: 'restaurant-website',
-      category: 'web',
+      category: 'ML',
       tags: ['HTML', 'CSS', 'JavaScript', 'PHP'],
       demoLink: '#',
       codeLink: '#',
     },
     {
       id: 8,
-      title: 'Music Player',
+      title: 'Discrete Event Simulation',
       description: 'A web-based music player with playlist management and audio visualization.',
       image: 'music-player',
-      category: 'app',
+      category: 'web',
       tags: ['React', 'Web Audio API', 'Styled Components'],
       demoLink: '#',
       codeLink: '#',
@@ -140,7 +140,7 @@ const Projects = () => {
         
         <div className="flex justify-center mb-12">
           <div className="flex flex-wrap justify-center gap-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'ML', 'web'].map((filter) => (
+            {['all', 'ML', 'web', 'Analysis'].map((filter) => (
               <Button
                 key={filter}
                 variant={activeFilter === filter ? 'default' : 'ghost'}
