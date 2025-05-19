@@ -14,42 +14,42 @@ const ProjectsSection = () => {
     {
       id: 1,
       title: 'Tweets Classification',
-      description: 'A full-featured online store with product management, cart functionality, and payment processing.',
-      image: 'e-commerce-dashboard',
+      description: 'Scraped Twitter data and trained diverse model (Text & Image Classification and Word Embedding) to accurately predict emojis.',
+      image: 'tweets-classification',
       category: 'ML',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      demoLink: '#',
-      codeLink: '#',
+      tags: ['NLP', 'Computer Vision', 'Sentiment Analysis'],
+      demoLink: 'https://github.com/jasonmatthewsuhari/cs3244',
+      codeLink: 'https://github.com/jasonmatthewsuhari/cs3244',
     },
     {
       id: 2,
       title: 'Recommendation System',
-      description: 'A productivity application for managing tasks, projects, and team collaboration.',
-      image: 'task-management-app',
+      description: 'Engineered customer-advisor features and trained hybrid ML models to improve advisor-customer matching.',
+      image: 'recommendation-system',
       category: 'ML',
-      tags: ['React', 'Firebase', 'Tailwind CSS'],
-      demoLink: '#',
-      codeLink: '#',
+      tags: ['Deep Learning', 'Collaborative Filtering', 'Content-based Filtering'],
+      demoLink: 'https://github.com/SalmanAlfarisi5',
+      codeLink: 'https://github.com/SalmanAlfarisi5',
     },
     {
       id: 3,
       title: 'Stock Price Prediction',
-      description: 'A responsive portfolio website showcasing projects and skills with a modern design.',
-      image: 'portfolio-website',
+      description: 'Integrated market and sentiment data to forecast S&P 500 prices using Statistical, ML and DL models.',
+      image: 'stock-price-prediction',
       category: 'ML',
-      tags: ['React', 'Framer Motion', 'Tailwind CSS'],
-      demoLink: '#',
-      codeLink: '#',
+      tags: ['Time Series Analysis', 'LSTM', 'ARIMA'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/Stock-Price-Prediction',
+      codeLink: 'https://github.com/SalmanAlfarisi5/Stock-Price-Prediction',
     },
     {
       id: 4,
-      title: 'Website Development',
-      description: 'Real-time weather information with forecasts, maps, and location-based data.',
-      image: 'weather-dashboard',
-      category: 'web',
-      tags: ['JavaScript', 'Weather API', 'Chart.js'],
-      demoLink: '#',
-      codeLink: '#',
+      title: 'Taylor Swift Song Analysis',
+      description: 'Analyzed and visualized Taylor Swift song features in R to uncover trends in listener enjoyment.',
+      image: 'taylor-swift-song-analysis',
+      category: 'Analysis',
+      tags: ['R', 'Data Visualization', 'Data Analysis', 'ggplot2', 'markdown'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/Taylor-Swift-Song-Analysis',
+      codeLink: 'https://github.com/SalmanAlfarisi5/Taylor-Swift-Song-Analysis',
     },
   ];
   
@@ -98,7 +98,7 @@ const ProjectsSection = () => {
         
         <div className="flex justify-center mb-12">
           <div className="flex space-x-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'ML', 'web'].map((filter) => (
+            {['all', 'ML', 'web', 'Analysis'].map((filter) => (
               <Button
                 key={filter}
                 variant={activeFilter === filter ? 'default' : 'ghost'}
@@ -112,10 +112,11 @@ const ProjectsSection = () => {
         </div>
         
         <motion.div
+          key={activeFilter}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {filteredProjects.map((project) => (
