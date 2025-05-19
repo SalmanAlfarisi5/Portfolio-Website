@@ -12,21 +12,7 @@ const About = () => {
       transition={{ duration: 0.5 }}
       className="pt-20"
     >
-      <div className="container mx-auto px-4 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Me</h1>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Learn more about my background, skills, and the journey that led me to where I am today.
-          </p>
-        </motion.div>
-      </div>
-      
+
       <AboutSection />
       
       <section className="py-20 bg-background">

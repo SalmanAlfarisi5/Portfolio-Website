@@ -67,7 +67,7 @@ const Projects = () => {
       image: 'portfolio-website',
       category: 'web',
       tags: ['React', 'Framer Motion', 'Tailwind CSS'],
-      demoLink: 'https://github.com/SalmanAlfarisi5/Portfolio-Website',
+      demoLink: 'https://alfarisisalman.com/',
       codeLink: 'https://github.com/SalmanAlfarisi5/Portfolio-Website',
     },
     {
