@@ -89,7 +89,7 @@ const HeroSection = () => {
                 <img  
                   alt="Professional developer portrait" 
                   className="w-full h-full object-cover rounded-[calc(var(--radius)-3px)]"
-                 src="/public/Hero.png" />
+                 src="https://images.unsplash.com/photo-1607706189992-eae578626c86" />
               </div>
             </div>
           </motion.div>
