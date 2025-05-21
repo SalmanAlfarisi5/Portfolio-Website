@@ -38,13 +38,14 @@ const AboutSection = () => {
       title: 'Machine Learning Researcher Intern',
       company: 'Institute of Mental Health',
       period: 'May 2025 - July 2025',
-      description: 'Created RAG pipeline by putting textbook into vector embedding and implementing LLM models.',
+      description: 'Implement and Validate CAT for improving questionnaire tool for mental health using R and Concerto.\
+      Apply LLM for feature extraction for electronic health records and help build the LLM manuscripts.',
     },
     {
       title: 'Software Engineer Intern',
       company: 'PT. Alta Sejahtera Utama',
       period: 'May 2025 - July 2025',
-      description: 'Created website page including frontend + backend.',
+      description: 'Created website page to maintain the company finance including frontend + backend',
     },
     {
       title: 'Machine Learning Engineer Intern',

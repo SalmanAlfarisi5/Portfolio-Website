@@ -63,7 +63,7 @@ const Projects = () => {
     {
       id: 6,
       title: 'Portfolio Website',
-      description: 'A personal portfolio website showcasing my projects, skills, and experience.',
+      description: 'Built a responsive SPA with React and Vite, using React Router for navigation and Tailwind CSS + Radix UI (shadcn/ui) for utility-first, accessible components.',
       image: 'portfolio-website',
       category: 'web',
       tags: ['React', 'Framer Motion', 'Tailwind CSS'],
