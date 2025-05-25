@@ -24,32 +24,31 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold mb-6">My Philosophy</h2>
+              <h2 className="text-3xl font-bold mb-6">More About Me</h2>
               <p className="text-muted-foreground mb-4">
-                I believe that impactful data-driven solutions go beyond algorithms—
-                they solve real problems and empower users with actionable insights.
-                My approach blends deep technical expertise in machine learning with 
-                a solid grounding in user needs and business context.
+                I really like math ever since I was in elementary school and I picked up an interest in programming when I was in high school.
+                I started my journey in programming by learning Python, which I found to be a great language for beginners. After that, 
+                I decided to study Data Science and Computer Science at NUS, where I had the opportunity to explore various fields such as Machine Learning, Data Engineering, and Software Development. 
               </p>
               <p className="text-muted-foreground mb-4">
-                Every project I undertake is guided by these core principles:
+                I have a few hobbies that keep me balanced and inspired:
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Establish end-to-end, repeatable ML pipelines with clear versioning, testing, and orchestration</span>
+                  <span>Reading Japanese novels</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Clean, maintainable code that stands the test of time</span>
+                  <span>Travelling with families and friends</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Continuous learning and adaptation to new technologies</span>
+                  <span>Playing Chess with friends</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Collaborative approach that values communication and feedback</span>
+                  <span>Cycling around Singapore with friends</span>
                 </li>
               </ul>
             </motion.div>

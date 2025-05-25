@@ -38,17 +38,19 @@ const AboutSection = () => {
       title: 'Machine Learning Researcher Intern',
       company: 'Institute of Mental Health',
       period: 'May 2025 - July 2025',
-      description: 'Implement and Validate CAT for improving questionnaire tool for mental health using R and Concerto.\
-      Apply LLM for feature extraction for electronic health records and help build the LLM manuscripts.',
+      description: 'Developed a data pipeline to integrate and standardize multiple FormSG submissions with CAT outputs for machine learning tasks.\
+      Trained and fine-tuned various regression models (Linear, Lasso, Ridge) to predict CAT outcomes using comprehensive questionnaire data, incorporating health-specific scoring logic.\
+      Applied Large Language Models (LLMs) for feature extraction from electronic health records (EHRs) and contributed to the development of research manuscripts on LLM methodologies.',
     },
     {
-      title: 'Software Engineer Intern',
+      title: 'Web Developer',
       company: 'PT. Alta Sejahtera Utama',
       period: 'May 2025 - July 2025',
-      description: 'Created website page to maintain the company finance including frontend + backend',
+      description: 'Designed and implemented a full-stack financial management page using ReactJS for a responsive, component-driven frontend and PostgreSQL for a secure, \
+      enabling real-time CRUD operations on company financial records and seamless data synchronization via a RESTful API.',
     },
     {
-      title: 'Machine Learning Engineer Intern',
+      title: 'Machine Learning Engineer',
       company: 'VetBuddy',
       period: 'Nov 2024 - Jan 2025',
       description: 'Collaborated with Mandai to deliver AI-based medication prescription for\
@@ -58,7 +60,7 @@ const AboutSection = () => {
          data and medication references for contextual understanding',
     },
     {
-      title: 'Software Engineer Intern',
+      title: 'Web Developer',
       company: 'Mitra Taxindo Consulting',
       period: 'Nov 2024 - Jan 2025',
       description: 'Designed and implemented a fully responsive and scalable profile website for \
@@ -71,9 +73,8 @@ const AboutSection = () => {
       title: 'Teaching Assistant',
       company: 'National University of Singapore',
       period: 'Jan 2024 - Dec 2025',
-      description: 'Conducted weekly lab sessions for Data Structure & Algorithm module, guiding students \
-      through complex algorithmic concepts and problem-solving strategies. Designed questions for the entire \
-      cohort during summer break.',
+      description: 'Conducted weekly lab sessions for Data Structure & Algorithm module, guiding students through complex algorithmic concepts and problem-solving strategies. \
+      Crafted materials regarding Machine Learning & A.I and conducted weekly tutorial sessions for 30+ students.',
     },
   ];
 
@@ -84,6 +85,13 @@ const AboutSection = () => {
       period: '2023 - 2027',
       description: 'Second Major in Computer Science and Minor in Quantitative Finance with focus area in Machine Learning',
     },
+    {
+      degree: 'High School',
+      institution: 'M. H. Thamrin State Prominent High School',
+      period: '2020 - 2023',
+      description: 'Represented school in various Math competitions and Olympiads and participated in many organizations',
+    },
+
   ];
 
   return (
@@ -130,16 +138,15 @@ const AboutSection = () => {
           >
             <h3 className="text-2xl font-bold mb-4">My Journey</h3>
             <p className="text-muted-foreground mb-6">
-              I've completed multiple projects and internships in Data Science, Machine Learning, and Software Development—spanning 
+              I've completed multiple projects and internships in Data Analysis, Machine Learning and Software Development, spanning 
               text & image classification, recommendation systems, stock-market analysis and prediction, and full-stack web development. 
-              My passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040), 
+              Along the way, my passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040), 
               and I now serve as a Teaching Assistant for that course.
             </p>
             <p className="text-muted-foreground mb-6">
               I believe in continuous learning, staying current with the latest machine-learning frameworks 
-              and data-engineering best practices. When I'm not optimizing models or writing production-grade services, 
-              you'll find me exploring new technologies, contributing to open-source projects, or mentoring peers in algorithms 
-              and software development.
+              and Data Analysis best practices. While I have tried applications of machine learning in various domains, including healthcare and finance,
+              I am still keen to explore new challenges and opportunities to apply machine learning in other fields.
             </p>
             <div className="flex flex-wrap gap-3">
               {['Python', 'SQL', 'PyTorch', 'TensorFlow', 'Keras', 'LangChain (RAG)'].map((tag, index) => (

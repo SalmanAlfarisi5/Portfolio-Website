@@ -43,7 +43,7 @@ const Footer = () => {
         
         <div className="mt-8 pt-4 border-t border-border/10 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} My Portfolio. All rights reserved.
+            © {currentYear} Salman Portfolio.
           </p>
           
           <div className="mt-4 md:mt-0 flex space-x-6">
