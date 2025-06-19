@@ -21,15 +21,13 @@ const AboutSection = () => {
   const skills = [
     { name: 'Python', level: 90 },
     { name: 'SQL', level: 75 },
-    { name: 'R', level: 80 },
-    { name: 'PyTorch', level: 85 },
-    { name: 'TensorFlow', level: 85 },
-    { name: 'Keras', level: 80 },
-    { name: 'LangChain (RAG)', level: 85 },
+    { name: 'R', level: 85 },
+    { name: 'PyTorch', level: 70 },
+    { name: 'TensorFlow', level: 80 },
+    { name: 'Scikit-Learn', level: 80 },
+    { name: 'LangChain (RAG)', level: 80 },
     { name: 'OpenCV', level: 70 },
     { name: 'PostgreSQL', level: 80 },
-    { name: 'Apache Spark', level: 60 },
-    { name: 'Airflow ', level: 60 },
     { name: 'Git & GitHub', level: 80 },
   ];
 
@@ -41,13 +39,6 @@ const AboutSection = () => {
       description: 'Developed a data pipeline to integrate and standardize multiple FormSG submissions with CAT outputs for machine learning tasks.\
       Trained and fine-tuned various regression models (Linear, Lasso, Ridge) to predict CAT outcomes using comprehensive questionnaire data, incorporating health-specific scoring logic.\
       Applied Large Language Models (LLMs) for feature extraction from electronic health records (EHRs) and contributed to the development of research manuscripts on LLM methodologies.',
-    },
-    {
-      title: 'Web Developer',
-      company: 'PT. Alta Sejahtera Utama',
-      period: 'May 2025 - July 2025',
-      description: 'Designed and implemented a full-stack financial management page using ReactJS for a responsive, component-driven frontend and PostgreSQL for a secure, \
-      enabling real-time CRUD operations on company financial records and seamless data synchronization via a RESTful API.',
     },
     {
       title: 'Machine Learning Engineer',
@@ -73,8 +64,8 @@ const AboutSection = () => {
       title: 'Teaching Assistant',
       company: 'National University of Singapore',
       period: 'Jan 2024 - Dec 2025',
-      description: 'Conducted weekly lab sessions for Data Structure & Algorithm module, guiding students through complex algorithmic concepts and problem-solving strategies. \
-      Crafted materials regarding Machine Learning & A.I and conducted weekly tutorial sessions for 30+ students.',
+      description: 'Crafted notes and conducted weekly lab and tutorial session for three classes (Machine Learning & A.I and Data Structure & Algorithm), attended by over 50+ students in total.\
+      Achieved overall feedback score of 4.6 / 5.0 for effectiveness and engagement.',
     },
   ];
 
@@ -107,7 +98,7 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I'm a second year student in NUS with passion in Data Science & Analytics and Machine Learning.
+            I'm a third year student in NUS with passion in A.I and Machine Learning.
             Here's a bit more about my journey, skills, and experience.
           </p>
         </motion.div>
@@ -138,8 +129,8 @@ const AboutSection = () => {
           >
             <h3 className="text-2xl font-bold mb-4">My Journey</h3>
             <p className="text-muted-foreground mb-6">
-              I've completed multiple projects and internships in Data Analysis, Machine Learning and Software Development, spanning 
-              text & image classification, recommendation systems, stock-market analysis and prediction, and full-stack web development. 
+              I've a few experiences in Machine Learning, Data Analysis and Software Development, spanning 
+              Natural Language Processing, Recommendation System, Stock Market Analysis & Prediction, and Full-Stack Web Development. 
               Along the way, my passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040), 
               and I now serve as a Teaching Assistant for that course.
             </p>

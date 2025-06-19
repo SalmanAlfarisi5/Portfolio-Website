@@ -36,19 +36,19 @@ const About = () => {
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Reading Japanese novels</span>
+                  <span>Reading Japanese novels (especially Murakami's)</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Travelling with families and friends</span>
+                  <span>Travelling with families (Japan is my favourite so far)</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Playing Chess with friends</span>
+                  <span>Playing Chess with friends (both online and onboard)</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Cycling around Singapore with friends</span>
+                  <span>Cycling around Singapore with friends (weekly)</span>
                 </li>
               </ul>
             </motion.div>
