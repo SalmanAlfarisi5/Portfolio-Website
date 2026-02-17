@@ -29,14 +29,21 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+          <a 
+            href="https://drive.google.com/file/d/1khPDN6ioO7npnRhwBxuXrh2icgOFf32c/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <motion.span 
-              className="inline-block px-3 py-1 text-sm rounded-full bg-primary/10 text-primary mb-4"
+              className="inline-block px-3 py-1 text-sm rounded-full bg-primary/10 text-primary mb-4 cursor-pointer"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              Welcome to my portfolio
+              See my resume
             </motion.span>
+          </a>
+
             
             <motion.h1 
               className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
@@ -53,7 +60,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              A passionate data scientist focused on crafting scalable machine-learning pipelines and deriving actionable insights from complex data.
+              A data scientiest with a strong background in machine learning, data analysis, and software development. I specialize in building scalable machine learning pipelines and deriving actionable insights from complex data.
             </motion.p>
             
             <motion.div 

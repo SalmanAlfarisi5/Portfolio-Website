@@ -20,44 +20,47 @@ const AboutSection = () => {
 
   const skills = [
     { name: 'Python', level: 90 },
-    { name: 'SQL', level: 75 },
-    { name: 'R', level: 80 },
-    { name: 'PyTorch', level: 85 },
-    { name: 'TensorFlow', level: 85 },
-    { name: 'Keras', level: 80 },
-    { name: 'LangChain (RAG)', level: 85 },
-    { name: 'OpenCV', level: 70 },
-    { name: 'PostgreSQL', level: 80 },
-    { name: 'Apache Spark', level: 60 },
-    { name: 'Airflow ', level: 60 },
-    { name: 'Git & GitHub', level: 80 },
+    { name: 'SQL', level: 85 },
+    { name: 'Java', level: 75 },
+    { name: 'JavaScript', level: 70 },
+    { name: 'R', level: 70 },
+    { name: 'PowerBI', level: 75 },
+    { name: 'TensorFlow', level: 80 },
+    { name: 'PyTorch', level: 80 },
   ];
 
   const experiences = [
     {
-      title: 'Machine Learning Researcher Intern',
-      company: 'Institute of Mental Health',
-      period: 'May 2025 - July 2025',
-      description: 'Developed a data pipeline to integrate and standardize multiple FormSG submissions with CAT outputs for machine learning tasks.\
-      Trained and fine-tuned various regression models (Linear, Lasso, Ridge) to predict CAT outcomes using comprehensive questionnaire data, incorporating health-specific scoring logic.\
-      Applied Large Language Models (LLMs) for feature extraction from electronic health records (EHRs) and contributed to the development of research manuscripts on LLM methodologies.',
+      title: 'Operations Automation Engineer Intern',
+      company: 'ShopBack',
+      period: 'Jan 2026 - May 2026',
+      description: 'Developed end-to-end automation pipelines to benchmark and evaluate LLM models for quality control across ShopBack and merchant datasets, \
+      leveraging API integrations and refined semantic matching techniques to significantly reduce manual matching costs and turnaround time. \
+      Maintained and enhanced the internal automation platform for large-scale data ingestion and spike alerting via Slack, \
+      implementing SSO authentication and delivering new features to improve system reliability and reduce operational costs.',
     },
     {
-      title: 'Web Developer',
-      company: 'PT. Alta Sejahtera Utama',
-      period: 'May 2025 - July 2025',
-      description: 'Designed and implemented a full-stack financial management page using ReactJS for a responsive, component-driven frontend and PostgreSQL for a secure, \
-      enabling real-time CRUD operations on company financial records and seamless data synchronization via a RESTful API.',
+      title: 'Data Scientist Intern',
+      company: 'Astra International',
+      period: 'Jul 2025 - Sep 2025',
+      description: 'Researched and evaluated LLM evaluation frameworks (statistical- and LLM-based) to establish a baseline methodology for internal analytics tools. \
+      Trained forecasting models for CPO prices in Indonesia using econometric and machine learning approaches to minimize prediction error while ensuring interpretability. \
+      Developed a recommendation system for product substitutability in the spare parts retail sector, incorporating market analysis, bundling strategies, and intelligent substitution logic.',
     },
     {
-      title: 'Machine Learning Engineer',
+      title: 'Data Analyst Intern',
+      company: 'National Health Group',
+      period: 'May 2025 - Jul 2025',
+      description: 'Designed and implemented a data pipeline to integrate and standardize questionnaire submissions from multiple formats into a single structured dataset for efficient statistical analysis. \
+      Automated personalized healthcare report generation by translating patient survey responses into structured clinical summaries. \
+      Applied multiple LLMs for clinical text extraction, converting unstructured triage and psychotherapy notes into structured JSON datasets categorized by psychological frameworks.',
+    },
+    {
+      title: 'Machine Learning Engingeer',
       company: 'VetBuddy',
       period: 'Nov 2024 - Jan 2025',
-      description: 'Collaborated with Mandai to deliver AI-based medication prescription for\
-       zoo and veterinary clinics in Singapore and India. Implemented Retrieval-Augmented\
-        Generation (RAG) using GPT-4 and Azure Vector Database, along with Llama models,\
-         to provide accurate medication prescription recommendations by leveraging historical \
-         data and medication references for contextual understanding',
+      description: 'Partnered with Mandai to deliver AI-based medication prescription systems for zoo and veterinary clinics in Singapore and India. \
+      Implemented Retrieval-Augmented Generation (RAG) using GPT-4, Azure Vector Database, and Llama models to provide accurate, context-aware medication recommendations leveraging historical medical data and references.',
     },
     {
       title: 'Web Developer',
@@ -72,9 +75,9 @@ const AboutSection = () => {
     {
       title: 'Teaching Assistant',
       company: 'National University of Singapore',
-      period: 'Jan 2024 - Dec 2025',
-      description: 'Conducted weekly lab sessions for Data Structure & Algorithm module, guiding students through complex algorithmic concepts and problem-solving strategies. \
-      Crafted materials regarding Machine Learning & A.I and conducted weekly tutorial sessions for 30+ students.',
+      period: 'Jan 2025 - Dec 2025',
+      description: 'Conducted weekly classes for CS2040 (Data Structures & Algorithms) and IT1244 (Machine Learning & A.I) for ~50 students. \
+      Prepared learning materials, facilitated tutorials, answered forum questions, and guided students through complex algorithmic and machine learning problem-solving strategies.',
     },
   ];
 
@@ -83,13 +86,15 @@ const AboutSection = () => {
       degree: 'Bachelor of Data Science & Analytics',
       institution: 'National University of Singapore',
       period: '2023 - 2027',
-      description: 'Second Major in Computer Science and Minor in Quantitative Finance with focus area in Machine Learning',
+      description: 'Second Major in Computer Science and Minor in Quantitative Finance with focus area in Machine Learning.\
+      Ranked top in Data Structures & Algorithms (CS2040) and currently serving as a Teaching Assistant for that course.\
+      Currenntly contributing to research in the LLM framework and the application of machine learning in various fields.',
     },
     {
       degree: 'High School',
       institution: 'M. H. Thamrin State Prominent High School',
       period: '2020 - 2023',
-      description: 'Represented school in various Math competitions and Olympiads and participated in many organizations',
+      description: 'Represented school in various Math competitions and Olympiads and organized events in many occasions',
     },
 
   ];
@@ -107,7 +112,7 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I'm a second year student in NUS with passion in Data Science & Analytics and Machine Learning.
+            I'm a third year student in NUS with passion in Machine Learning and Algorithm.
             Here's a bit more about my journey, skills, and experience.
           </p>
         </motion.div>
@@ -138,8 +143,8 @@ const AboutSection = () => {
           >
             <h3 className="text-2xl font-bold mb-4">My Journey</h3>
             <p className="text-muted-foreground mb-6">
-              I've completed multiple projects and internships in Data Analysis, Machine Learning and Software Development, spanning 
-              text & image classification, recommendation systems, stock-market analysis and prediction, and full-stack web development. 
+              I've completed multiple projects and internships in Data Science, Data Analysis, Machine Learning and Software Development, spanning 
+              automation pipelines, image classification, NLP, recommendation systems, stock-market analysis and prediction, and full-stack web development. 
               Along the way, my passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040), 
               and I now serve as a Teaching Assistant for that course.
             </p>

@@ -26,29 +26,29 @@ const About = () => {
             >
               <h2 className="text-3xl font-bold mb-6">More About Me</h2>
               <p className="text-muted-foreground mb-4">
-                I really like math ever since I was in elementary school and I picked up an interest in programming when I was in high school.
-                I started my journey in programming by learning Python, which I found to be a great language for beginners. After that, 
-                I decided to study Data Science and Computer Science at NUS, where I had the opportunity to explore various fields such as Machine Learning, Data Engineering, and Software Development. 
+                I am actively researching in the field of deep learning, particularly Natural Language Processing (NLP) and Reinforcement Learning (RL). 
+                I am also curious on the application of machine learning in finance field, which led me doing a minor in Quantitative Finance
+                and multiple projects in that area.
               </p>
               <p className="text-muted-foreground mb-4">
-                I have a few hobbies that keep me balanced and inspired:
+                Also, these are some of my hobbies and interests outside of work and school:
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Reading Japanese novels</span>
+                  <span>Reading novels</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Travelling with families and friends</span>
+                  <span>Travelling</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Playing Chess with friends</span>
+                  <span>Playing Chesss</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
-                  <span>Cycling around Singapore with friends</span>
+                  <span>Night cycling around Singapore</span>
                 </li>
               </ul>
             </motion.div>
