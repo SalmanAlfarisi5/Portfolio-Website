@@ -13,12 +13,12 @@ const Projects = () => {
     {
       id: 9,
       title: 'saLLMan — Step-aware LLM',
-      description: 'Built a decoder-only LLM from scratch with RoPE positional encoding, SwiGLU activation, and RMSNorm, trained on DSA reasoning corpora (LeetCode & Codeforces). Applied GRPO reinforcement learning to align the model toward step-by-step algorithmic reasoning.',
+      description: 'Progressively built Transformer architectures across 4 phases — from vanilla encoder-decoder to a 75M-parameter code LLM with RoPE, SwiGLU, RMSNorm, and FlashAttention. Applied GRPO reinforcement learning to align the model toward step-by-step DSA reasoning with chain-of-thought traces.',
       image: 'sallman',
       category: 'ML',
-      tags: ['PyTorch', 'LLM', 'GRPO', 'Transformers'],
-      demoLink: 'https://github.com/SalmanAlfarisi5',
-      codeLink: 'https://github.com/SalmanAlfarisi5',
+      tags: ['PyTorch', 'LLM', 'GRPO', 'FlashAttention'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
+      codeLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
     },
     {
       id: 10,
@@ -121,6 +121,46 @@ const Projects = () => {
       codeLink: 'https://github.com/SalmanAlfarisi5/DSA1101-Final-Assignment',
     },
     {
+      id: 13,
+      title: 'Traffic Sign Classification',
+      description: 'Benchmarked 5 CNN architectures (AlexNet, ResNet50, VGG16, EfficientNetB0, custom CNN) on 23 traffic sign classes. Fine-tuned ResNet50 and EfficientNetB0 via transfer learning, both achieving 99.9% test accuracy on ~5,000 images.',
+      image: 'traffic-sign-classification',
+      category: 'ML',
+      tags: ['PyTorch', 'CNN', 'Transfer Learning', 'Computer Vision'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/TrafficSignClassification',
+      codeLink: 'https://github.com/SalmanAlfarisi5/TrafficSignClassification',
+    },
+    {
+      id: 14,
+      title: 'Rice Leaf Disease Detection',
+      description: 'Built a deep learning pipeline to classify 5 categories of rice leaf diseases using transfer learning. ResNet-50 achieved 100% test accuracy; EfficientNet B0 and MobileNet V2 scored 99.4% and 98.8% respectively on ~5,000 images.',
+      image: 'rice-leaf-disease',
+      category: 'ML',
+      tags: ['ResNet-50', 'EfficientNet', 'Transfer Learning', 'Computer Vision'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/RiceLeafDisease',
+      codeLink: 'https://github.com/SalmanAlfarisi5/RiceLeafDisease',
+    },
+    {
+      id: 15,
+      title: 'DNA Cancer Detection',
+      description: 'Benchmarked ML classifiers for early cancer detection from cell-free DNA fragment-length analysis. Optimized classification thresholds on Precision-Recall curves, achieving ≥95% recall with Logistic Regression reaching 97.5% precision.',
+      image: 'cancer-detection',
+      category: 'ML',
+      tags: ['Machine Learning', 'Healthcare', 'Scikit-learn', 'Imbalanced Data'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/CancerDetection',
+      codeLink: 'https://github.com/SalmanAlfarisi5/CancerDetection',
+    },
+    {
+      id: 16,
+      title: 'Markowitz Portfolio Optimization',
+      description: 'Simulated Markowitz Portfolio Optimization on S&P 500 stocks, applying Modern Portfolio Theory to calculate optimal asset allocations based on risk-return tradeoffs and efficient frontier analysis.',
+      image: 'markowitz-portfolio',
+      category: 'Analysis',
+      tags: ['Portfolio Optimization', 'Quantitative Finance', 'Python', 'S&P 500'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/MarkowitzPortfolioOptimization',
+      codeLink: 'https://github.com/SalmanAlfarisi5/MarkowitzPortfolioOptimization',
+    },
+    {
       id: 8,
       title: 'Discrete Event Simulation',
       description: 'Developed a Java OOP simulator for multi-queue, multi-server systems—handling arrival, service, and departure events.',
@@ -173,8 +213,8 @@ const Projects = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">My Projects</h1>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore my portfolio of projects showcasing my skills and experience in
-            Machine Learning, Web Development, and Data Analysis. 
+            Explore my portfolio of projects across Machine Learning, LLMs, Computer Vision, NLP,
+            Quantitative Finance, and Software Development.
           </p>
         </motion.div>
         

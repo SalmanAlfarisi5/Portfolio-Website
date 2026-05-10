@@ -14,12 +14,12 @@ const ProjectsSection = () => {
     {
       id: 9,
       title: 'saLLMan — Step-aware LLM',
-      description: 'Built a decoder-only LLM from scratch with RoPE positional encoding, SwiGLU activation, and RMSNorm, trained on DSA reasoning corpora. Applied GRPO reinforcement learning to align the model toward step-by-step algorithmic reasoning.',
+      description: 'Progressively built Transformer architectures across 4 phases — from vanilla encoder-decoder to a 75M-parameter code LLM with RoPE, SwiGLU, RMSNorm, and FlashAttention. Applied GRPO reinforcement learning to align the model toward step-by-step DSA reasoning.',
       image: 'sallman',
       category: 'ML',
-      tags: ['PyTorch', 'LLM', 'GRPO', 'Transformers'],
-      demoLink: 'https://github.com/SalmanAlfarisi5',
-      codeLink: 'https://github.com/SalmanAlfarisi5',
+      tags: ['PyTorch', 'LLM', 'GRPO', 'FlashAttention'],
+      demoLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
+      codeLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
     },
     {
       id: 10,
