@@ -19,33 +19,28 @@ const AboutSection = () => {
   };
 
   const skills = [
-    { name: 'Python', level: 90 },
+    { name: 'Python', level: 95 },
+    { name: 'PyTorch', level: 85 },
+    { name: 'HuggingFace / LLMs', level: 85 },
     { name: 'SQL', level: 85 },
+    { name: 'RAG / FAISS', level: 80 },
+    { name: 'LangChain', level: 80 },
+    { name: 'FastAPI / Flask', level: 75 },
     { name: 'Java', level: 75 },
-    { name: 'JavaScript', level: 70 },
-    { name: 'R', level: 70 },
-    { name: 'PowerBI', level: 75 },
-    { name: 'TensorFlow', level: 80 },
-    { name: 'PyTorch', level: 80 },
   ];
 
   const experiences = [
     {
-      title: 'Operations Automation Engineer Intern',
+      title: 'Automation Engineer Intern',
       company: 'ShopBack',
       period: 'Jan 2026 - May 2026',
-      description: 'Developed end-to-end automation pipelines to benchmark and evaluate LLM models for quality control across ShopBack and merchant datasets, \
-      leveraging API integrations and refined semantic matching techniques to significantly reduce manual matching costs and turnaround time. \
-      Maintained and enhanced the internal automation platform for large-scale data ingestion and spike alerting via Slack, \
-      implementing SSO authentication and delivering new features to improve system reliability and reduce operational costs.',
+      description: 'Built PRISM, a scalable end-to-end Quality Control automation pipeline reconciling merchant and ShopBack data, currently live in Australia and architected for rollout across 11 markets, with features including scheduled QC runs, email-triggered pipeline execution, and custom web crawling to validate merchant contracts against live listings. Developed VoiceTrace, an LLM-powered operations intelligence system for cashback dispute tickets that automates transaction retrieval, generates resolution insights, enables bulk ticket categorization, and delivers real-time merchant health monitoring via Slack.',
     },
     {
       title: 'Data Scientist Intern',
       company: 'Astra International',
       period: 'Jul 2025 - Sep 2025',
-      description: 'Researched and evaluated LLM evaluation frameworks (statistical- and LLM-based) to establish a baseline methodology for internal analytics tools. \
-      Trained forecasting models for CPO prices in Indonesia using econometric and machine learning approaches to minimize prediction error while ensuring interpretability. \
-      Developed a recommendation system for product substitutability in the spare parts retail sector, incorporating market analysis, bundling strategies, and intelligent substitution logic.',
+      description: 'Researched and evaluated LLM evaluation frameworks (statistical- and LLM-based) to establish a baseline methodology for Astra International\'s LLM evaluator product. Trained forecasting models for CPO prices in Indonesia, integrating multi-source features with econometric and machine learning approaches to minimize prediction error. Developed a product substitutability recommendation system for the spare parts retail sector, incorporating market analysis, bundling strategies, and intelligent substitution logic.',
     },
     {
       title: 'Data Analyst Intern',
@@ -56,11 +51,10 @@ const AboutSection = () => {
       Applied multiple LLMs for clinical text extraction, converting unstructured triage and psychotherapy notes into structured JSON datasets categorized by psychological frameworks.',
     },
     {
-      title: 'Machine Learning Engineer',
+      title: 'Machine Learning Scientist',
       company: 'VetBuddy',
       period: 'Nov 2024 - Jan 2025',
-      description: 'Partnered with Mandai to deliver AI-based medication prescription systems for zoo and veterinary clinics in Singapore and India. \
-      Implemented Retrieval-Augmented Generation (RAG) using GPT-4, Azure Vector Database, and Llama models to provide accurate, context-aware medication recommendations leveraging historical medical data and references.',
+      description: 'Partnered with Mandai to deliver AI-based medication prescription for zoo and veterinary clinics in Singapore and India through a web-based solution. Implemented Retrieval-Augmented Generation (RAG) using GPT-4 and Azure Vector Database, along with Llama models, to provide accurate medication prescription recommendations by leveraging historical data and medication references.',
     },
     {
       title: 'Web Developer',
@@ -76,17 +70,16 @@ const AboutSection = () => {
       title: 'Teaching Assistant',
       company: 'National University of Singapore',
       period: 'Jan 2025 - Dec 2025',
-      description: 'Conducted weekly classes for CS2040 (Data Structures & Algorithms) and IT1244 (Machine Learning & A.I) for ~50 students. \
-      Prepared learning materials, facilitated tutorials, answered forum questions, and guided students through complex algorithmic and machine learning problem-solving strategies.',
+      description: 'Conducted weekly classes on Data Structures & Algorithms and Machine Learning/AI for ~50 students, preparing learning materials, answering forum questions, and guiding students through complex problem-solving strategies. Developed an automated grading pipeline for ~100 students, eliminating manual grading overhead and ensuring consistent, reproducible scoring at scale.',
     },
   ];
 
   const education = [
     {
-      degree: 'Bachelor of Data Science & Analytics',
+      degree: 'Bachelor of Science (Hons.) in Data Science and Analytics',
       institution: 'National University of Singapore',
       period: '2023 - 2027',
-      description: 'Second Major in Computer Science and Minor in Quantitative Finance, with a focus area in Machine Learning. Ranked top in Data Structures & Algorithms (CS2040) and currently serving as a Teaching Assistant for that course. Currently contributing to research on LLM frameworks and the application of machine learning in various fields.',
+      description: 'Cumulative GPA: 4.63/5.00. Double Major in Computer Science (Focus Area in Artificial Intelligence) and Minor in Quantitative Finance. Ranked top student in Data Structures & Algorithms among 616 students, and currently serving as Teaching Assistant for CS2040 (Data Structures & Algorithms) and IT1244 (Artificial Intelligence & Machine Learning).',
     },
     {
       degree: 'High School',
@@ -141,10 +134,9 @@ const AboutSection = () => {
           >
             <h3 className="text-2xl font-bold mb-4">My Journey</h3>
             <p className="text-muted-foreground mb-6">
-              I've completed multiple projects and internships in Data Science, Data Analysis, Machine Learning and Software Development, spanning 
-              automation pipelines, image classification, NLP, recommendation systems, stock-market analysis and prediction, and full-stack web development. 
-              Along the way, my passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040), 
-              and I now serve as a Teaching Assistant for that course.
+              I've completed multiple projects and internships spanning Data Science, Machine Learning, and Software Development — building LLMs from scratch, multimodal RAG systems, NLP classifiers, forecasting models, and full-stack applications.
+              My passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040),
+              and I now serve as a Teaching Assistant for both CS2040 and IT1244 (AI & Machine Learning).
             </p>
             <p className="text-muted-foreground mb-6">
               I believe in continuous learning and staying current with the latest machine learning frameworks
@@ -152,7 +144,7 @@ const AboutSection = () => {
               I remain eager to explore new challenges and opportunities.
             </p>
             <div className="flex flex-wrap gap-3">
-              {['Python', 'SQL', 'PyTorch', 'TensorFlow', 'Keras', 'LangChain (RAG)'].map((tag, index) => (
+              {['Python', 'PyTorch', 'HuggingFace', 'LangChain', 'RAG / FAISS', 'FastAPI'].map((tag, index) => (
                 <motion.span
                   key={index}
                   custom={index}

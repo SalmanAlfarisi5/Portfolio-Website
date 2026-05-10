@@ -12,44 +12,44 @@ const ProjectsSection = () => {
   
   const projects = [
     {
-      id: 1,
-      title: 'Tweets Classification',
-      description: 'Scraped Twitter data and trained diverse model (Text & Image Classification and Word Embedding) to accurately predict emojis.',
-      image: 'tweets-classification',
+      id: 9,
+      title: 'saLLMan — Step-aware LLM',
+      description: 'Built a decoder-only LLM from scratch with RoPE positional encoding, SwiGLU activation, and RMSNorm, trained on DSA reasoning corpora. Applied GRPO reinforcement learning to align the model toward step-by-step algorithmic reasoning.',
+      image: 'sallman',
       category: 'ML',
-      tags: ['NLP', 'Image Processing', 'Sentiment Analysis'],
-      demoLink: 'https://github.com/jasonmatthewsuhari/cs3244',
-      codeLink: 'https://github.com/jasonmatthewsuhari/cs3244',
+      tags: ['PyTorch', 'LLM', 'GRPO', 'Transformers'],
+      demoLink: 'https://github.com/SalmanAlfarisi5',
+      codeLink: 'https://github.com/SalmanAlfarisi5',
     },
     {
-      id: 2,
-      title: 'Recommendation System',
-      description: 'Engineered customer-advisor features and trained hybrid ML models to improve advisor-customer matching.',
-      image: 'recommendation-system',
+      id: 10,
+      title: 'Multimodal Document RAG',
+      description: 'Built a multi-format document Q&A system using hybrid FAISS + BM25 retrieval with cross-encoder re-ranking and multimodal ingestion (PDF, DOCX, images via GPT-4o-mini). Evaluated against FinanceBench with LLM-as-judge scoring.',
+      image: 'multimodal-rag',
       category: 'ML',
-      tags: ['Deep Learning', 'Collaborative Filtering', 'Content-based Filtering'],
+      tags: ['RAG', 'FAISS', 'BM25', 'Flask', 'GPT-4o'],
+      demoLink: 'https://github.com/SalmanAlfarisi5',
+      codeLink: 'https://github.com/SalmanAlfarisi5',
+    },
+    {
+      id: 12,
+      title: 'Twitter Bias Detector',
+      description: 'Fine-tuned DistilBERT with LoRA + Bayesian Optimization (OPTUNA) for 20% metric improvement over baseline. Built as a Chrome extension with FastAPI backend and Hugging Face inference.',
+      image: 'twitter-bias-detector',
+      category: 'ML',
+      tags: ['NLP', 'DistilBERT', 'LoRA', 'FastAPI', 'Chrome Extension'],
       demoLink: 'https://github.com/SalmanAlfarisi5',
       codeLink: 'https://github.com/SalmanAlfarisi5',
     },
     {
       id: 3,
       title: 'Stock Price Prediction',
-      description: 'Integrated market and sentiment data to forecast S&P 500 prices using Statistical, ML and DL models.',
+      description: 'Forecasted S&P 500 index closing prices by integrating historical market data with news sentiment analysis. Trained and tuned ensemble models (XGBoost, CatBoost) and recurrent architectures (RNN, GRU, LSTM).',
       image: 'stock-price-prediction',
       category: 'ML',
-      tags: ['Time Series Analysis', 'Stock Market Prediction', 'Deep Learning'],
+      tags: ['Time Series', 'XGBoost', 'LSTM', 'Sentiment Analysis'],
       demoLink: 'https://github.com/SalmanAlfarisi5/Stock-Price-Prediction',
       codeLink: 'https://github.com/SalmanAlfarisi5/Stock-Price-Prediction',
-    },
-    {
-      id: 4,
-      title: 'Taylor Swift Song Analysis',
-      description: 'Analyzed and visualized Taylor Swift song features in R to uncover trends in listener enjoyment.',
-      image: 'taylor-swift-song-analysis',
-      category: 'Analysis',
-      tags: ['Data Visualization', 'Data Analysis', 'Markdown'],
-      demoLink: 'https://github.com/SalmanAlfarisi5/Taylor-Swift-Song-Analysis',
-      codeLink: 'https://github.com/SalmanAlfarisi5/Taylor-Swift-Song-Analysis',
     },
   ];
   
@@ -98,7 +98,7 @@ const ProjectsSection = () => {
         
         <div className="flex justify-center mb-12">
           <div className="flex space-x-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'ML', 'Analysis'].map((filter) => (
+            {['all', 'ML'].map((filter) => (
               <Button
                 key={filter}
                 variant={activeFilter === filter ? 'default' : 'ghost'}
