@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <span className="text-lg font-semibold gradient-text">Portfolio</span>
+            <span className="text-lg font-semibold gradient-text">Salman Alfarisi</span>
             <p className="text-sm text-muted-foreground mt-2">
               Modeling tomorrow's insights today.
             </p>
@@ -46,12 +46,9 @@ const Footer = () => {
             © {currentYear} Salman Portfolio.
           </p>
           
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <span className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
-              Privacy Policy
-            </span>
-            <span className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
-              Terms of Service
+          <div className="mt-4 md:mt-0">
+            <span className="text-xs text-muted-foreground">
+              Built with React, Tailwind CSS & Framer Motion
             </span>
           </div>
         </div>

@@ -60,7 +60,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              A data scientiest with a strong background in machine learning, data analysis, and software development. I specialize in building scalable machine learning pipelines and deriving actionable insights from complex data.
+              A data scientist with a strong background in machine learning, data analysis, and software development. I specialize in building scalable ML pipelines and deriving actionable insights from complex data.
             </motion.p>
             
             <motion.div 

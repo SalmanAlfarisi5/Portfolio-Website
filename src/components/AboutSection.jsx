@@ -56,7 +56,7 @@ const AboutSection = () => {
       Applied multiple LLMs for clinical text extraction, converting unstructured triage and psychotherapy notes into structured JSON datasets categorized by psychological frameworks.',
     },
     {
-      title: 'Machine Learning Engingeer',
+      title: 'Machine Learning Engineer',
       company: 'VetBuddy',
       period: 'Nov 2024 - Jan 2025',
       description: 'Partnered with Mandai to deliver AI-based medication prescription systems for zoo and veterinary clinics in Singapore and India. \
@@ -86,15 +86,13 @@ const AboutSection = () => {
       degree: 'Bachelor of Data Science & Analytics',
       institution: 'National University of Singapore',
       period: '2023 - 2027',
-      description: 'Second Major in Computer Science and Minor in Quantitative Finance with focus area in Machine Learning.\
-      Ranked top in Data Structures & Algorithms (CS2040) and currently serving as a Teaching Assistant for that course.\
-      Currenntly contributing to research in the LLM framework and the application of machine learning in various fields.',
+      description: 'Second Major in Computer Science and Minor in Quantitative Finance, with a focus area in Machine Learning. Ranked top in Data Structures & Algorithms (CS2040) and currently serving as a Teaching Assistant for that course. Currently contributing to research on LLM frameworks and the application of machine learning in various fields.',
     },
     {
       degree: 'High School',
       institution: 'M. H. Thamrin State Prominent High School',
       period: '2020 - 2023',
-      description: 'Represented school in various Math competitions and Olympiads and organized events in many occasions',
+      description: 'Represented school in various Mathematics competitions and Olympiads, and organized events on many occasions.',
     },
 
   ];
@@ -112,7 +110,7 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            I'm a third year student in NUS with passion in Machine Learning and Algorithm.
+            I'm a third-year student at NUS with a passion for Machine Learning and Algorithms.
             Here's a bit more about my journey, skills, and experience.
           </p>
         </motion.div>
@@ -149,9 +147,9 @@ const AboutSection = () => {
               and I now serve as a Teaching Assistant for that course.
             </p>
             <p className="text-muted-foreground mb-6">
-              I believe in continuous learning, staying current with the latest machine-learning frameworks 
-              and Data Analysis best practices. While I have tried applications of machine learning in various domains, including healthcare and finance,
-              I am still keen to explore new challenges and opportunities to apply machine learning in other fields.
+              I believe in continuous learning and staying current with the latest machine learning frameworks
+              and data analysis best practices. Having applied machine learning across various domains including healthcare and finance,
+              I remain eager to explore new challenges and opportunities.
             </p>
             <div className="flex flex-wrap gap-3">
               {['Python', 'SQL', 'PyTorch', 'TensorFlow', 'Keras', 'LangChain (RAG)'].map((tag, index) => (

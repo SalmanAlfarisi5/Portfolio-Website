@@ -91,14 +91,14 @@ const ProjectsSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore a selection of my recent work, showcasing my skills and experience in
-            building modern, responsive, and user-friendly applications.
+            Explore a selection of my recent work, showcasing my expertise in
+            Machine Learning, Data Analysis, and Software Development.
           </p>
         </motion.div>
         
         <div className="flex justify-center mb-12">
           <div className="flex space-x-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'ML', 'web', 'Analysis'].map((filter) => (
+            {['all', 'ML', 'Analysis'].map((filter) => (
               <Button
                 key={filter}
                 variant={activeFilter === filter ? 'default' : 'ghost'}

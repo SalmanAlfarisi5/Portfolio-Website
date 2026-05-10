@@ -84,8 +84,8 @@ const Projects = () => {
       id: 8,
       title: 'Discrete Event Simulation',
       description: 'Developed a Java OOP simulator for multi-queue, multi-server systems—handling arrival, service, and departure events.',
-      image: 'disctrete-event-simulation',
-      category: 'web',
+      image: 'discrete-event-simulation',
+      category: 'dev',
       tags: ['Java', 'OOP'],
       demoLink: 'https://github.com/SalmanAlfarisi5',
       codeLink: 'https://github.com/SalmanAlfarisi5',
@@ -140,7 +140,7 @@ const Projects = () => {
         
         <div className="flex justify-center mb-12">
           <div className="flex flex-wrap justify-center gap-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'ML', 'web', 'Analysis'].map((filter) => (
+            {['all', 'ML', 'web', 'dev', 'Analysis'].map((filter) => (
               <Button
                 key={filter}
                 variant={activeFilter === filter ? 'default' : 'ghost'}
