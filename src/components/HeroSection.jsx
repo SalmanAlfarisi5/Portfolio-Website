@@ -30,7 +30,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
           >
           <a 
-            href="https://drive.google.com/file/d/1khPDN6ioO7npnRhwBxuXrh2icgOFf32c/view?usp=sharing"
+            href="https://drive.google.com/file/d/1yVRgsC0gjk1O0LGDkXBCzjnNcjLkYbqL/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
