@@ -204,12 +204,16 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="h-full"
           >
-            <div className="glass-card rounded-lg p-1 h-full">
-              <div className="bg-background rounded-md overflow-hidden h-full">
-                <img  
-                  alt="Map location" 
-                  className="w-full h-full object-cover rounded-md"
-                 src="https://images.unsplash.com/photo-1584735414166-8c436d5854ac" />
+            <div className="glass-card rounded-lg p-1 h-full min-h-[320px]">
+              <div className="bg-background rounded-md overflow-hidden h-full w-full">
+                <iframe
+                  title="Map showing Singapore"
+                  src="https://www.google.com/maps?q=National%20University%20of%20Singapore&z=11&output=embed"
+                  className="w-full h-full min-h-[320px] rounded-md border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
             </div>
           </motion.div>

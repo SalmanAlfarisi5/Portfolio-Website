@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, FileText, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -29,18 +29,18 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-          <a 
-            href="https://drive.google.com/file/d/1yVRgsC0gjk1O0LGDkXBCzjnNcjLkYbqL/view?usp=sharing"
+          <a
+            href="/Resume-Salman.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <motion.span 
-              className="inline-block px-3 py-1 text-sm rounded-full bg-primary/10 text-primary mb-4 cursor-pointer"
+            <motion.span
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-sm rounded-full bg-primary/10 text-primary mb-4 cursor-pointer hover:bg-primary/20 transition-colors"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              See my resume
+              <FileText className="h-3.5 w-3.5" /> See my resume
             </motion.span>
           </a>
 
@@ -92,11 +92,43 @@ const HeroSection = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
           >
             <div className="relative w-full aspect-square max-w-md mx-auto animated-border">
-              <div className="absolute inset-[3px] bg-background rounded-[calc(var(--radius)-3px)] z-10 flex items-center justify-center">
-                <img  
-                  alt="Professional developer portrait" 
-                  className="w-full h-full object-cover rounded-[calc(var(--radius)-3px)]"
-                 src="https://images.unsplash.com/photo-1607706189992-eae578626c86" />
+              <div className="absolute inset-[3px] bg-background rounded-[calc(var(--radius)-3px)] z-10 flex flex-col items-center justify-center text-center p-8 gap-5">
+                <div className="relative">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-4xl font-bold text-white shadow-lg shadow-primary/30">
+                    MS
+                  </div>
+                  <span className="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-green-500 border-4 border-background" title="Open to opportunities" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold">Muhammad Salman</h2>
+                  <p className="text-primary font-medium">Data Scientist · ML Engineer</p>
+                  <p className="text-sm text-muted-foreground mt-1">NUS '27 · Singapore</p>
+                </div>
+                <div className="flex gap-3">
+                  {[
+                    { icon: <Github className="h-5 w-5" />, href: 'https://github.com/SalmanAlfarisi5', label: 'GitHub' },
+                    { icon: <Linkedin className="h-5 w-5" />, href: 'https://www.linkedin.com/in/salmanalfarisi5', label: 'LinkedIn' },
+                    { icon: <FileText className="h-5 w-5" />, href: '/Resume-Salman.pdf', label: 'Resume' },
+                  ].map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.label}
+                      className="p-2.5 rounded-full bg-secondary/60 hover:bg-primary/20 text-foreground/80 hover:text-primary transition-colors"
+                    >
+                      {item.icon}
+                    </a>
+                  ))}
+                </div>
+                <div className="flex flex-wrap justify-center gap-2 pt-1">
+                  {['LLMs', 'RAG', 'PyTorch'].map((tag) => (
+                    <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-secondary/50 text-muted-foreground">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,40 +62,44 @@ const Navbar = () => {
           <span className="text-2xl font-bold gradient-text">Salman Alfarisi</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                location.pathname === link.path ? 'text-primary' : 'text-foreground/80'
-              }`}
-            >
-              {link.name}
-              {location.pathname === link.path && (
-                <motion.div
-                  layoutId="navbar-indicator"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center gap-1 md:gap-2">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8 mr-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                  location.pathname === link.path ? 'text-primary' : 'text-foreground/80'
+                }`}
+              >
+                {link.name}
+                {location.pathname === link.path && (
+                  <motion.div
+                    layoutId="navbar-indicator"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                )}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={toggleMenu}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </Button>
+          <ThemeToggle />
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={toggleMenu}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

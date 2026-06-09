@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { Code, Briefcase, GraduationCap, Trophy, BrainCircuit } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
@@ -51,20 +51,16 @@ const AboutSection = () => {
       Applied multiple LLMs for clinical text extraction, converting unstructured triage and psychotherapy notes into structured JSON datasets categorized by psychological frameworks.',
     },
     {
+      title: 'Web Developer (Freelance)',
+      company: 'Mitra Taxindo Consulting',
+      period: 'Jan 2025 - May 2025',
+      description: 'Built and deployed a production bilingual (EN/ID) marketing website (mtaxindo.com) for a Jakarta tax-consulting firm using React 18, Vite, and React Router on Vercel, with a custom React-Context i18n layer, browser-language detection, and localStorage persistence. Engineered SEO and performance optimizations — route-level code splitting, a per-route meta/Open-Graph hook, JSON-LD structured data, sitemap/robots, scroll-reveal animations, and a serverless Web3Forms contact pipeline with accessible feedback states.',
+    },
+    {
       title: 'Machine Learning Scientist',
       company: 'VetBuddy',
       period: 'Nov 2024 - Jan 2025',
       description: 'Partnered with Mandai to deliver AI-based medication prescription for zoo and veterinary clinics in Singapore and India through a web-based solution. Implemented Retrieval-Augmented Generation (RAG) using GPT-4 and Azure Vector Database, along with Llama models, to provide accurate medication prescription recommendations by leveraging historical data and medication references.',
-    },
-    {
-      title: 'Web Developer',
-      company: 'Mitra Taxindo Consulting',
-      period: 'Nov 2024 - Jan 2025',
-      description: 'Designed and implemented a fully responsive and scalable profile website for \
-      a leading tax consulting firm in Indonesia, leveraging ReactJS to ensure dynamic user \
-      interaction and optimal performance. Built and deployed a Retrieval-Augmented Generation (RAG) \
-      pipeline for AI-powered chatbots, integrating advanced language models such as Llama 3 and Mixtral \
-      8x7B to enhance accuracy and contextual understanding',
     },
     {
       title: 'Teaching Assistant',
@@ -79,7 +75,7 @@ const AboutSection = () => {
       degree: 'Bachelor of Science (Hons.) in Data Science and Analytics',
       institution: 'National University of Singapore',
       period: '2023 - 2027',
-      description: 'Cumulative GPA: 4.63/5.00. Double Major in Computer Science (Focus Area in Artificial Intelligence) and Minor in Quantitative Finance. Ranked top student in Data Structures & Algorithms among 616 students, and currently serving as Teaching Assistant for CS2040 (Data Structures & Algorithms) and IT1244 (Artificial Intelligence & Machine Learning).',
+      description: 'Cumulative GPA: 4.64/5.00. Double Major in Computer Science (Focus Area in Artificial Intelligence) and Minor in Quantitative Finance. Ranked top student in Data Structures & Algorithms among 616 students, and serving as Teaching Assistant for CS2040 (Data Structures & Algorithms), IT1244 (Artificial Intelligence & Machine Learning), and DSS5105 (Data Science Projects in Practice).',
     },
     {
       degree: 'High School',
@@ -116,12 +112,43 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="glass-card rounded-lg p-1">
-              <div className="bg-background rounded-md overflow-hidden">
-                <img  
-                  alt="Developer working on code" 
-                  className="w-full h-auto rounded-md"
-                 src="https://images.unsplash.com/photo-1507146815454-9faa99d579aa" />
+            <div className="glass-card rounded-lg p-6 sm:p-8">
+              <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary" /> Quick Highlights
+              </h3>
+              <div className="space-y-5">
+                {[
+                  {
+                    icon: <GraduationCap className="h-5 w-5" />,
+                    title: 'B.Sc. Data Science & Analytics @ NUS',
+                    subtitle: 'GPA 4.64 / 5.00 · CS Double Major (AI) · Quant Finance Minor',
+                  },
+                  {
+                    icon: <Trophy className="h-5 w-5" />,
+                    title: 'Top student in Data Structures & Algorithms',
+                    subtitle: 'Highest cumulative score among 616 students',
+                  },
+                  {
+                    icon: <Briefcase className="h-5 w-5" />,
+                    title: '6 Data Science & ML roles',
+                    subtitle: 'ShopBack · Astra International · NHG · VetBuddy · NUS',
+                  },
+                  {
+                    icon: <BrainCircuit className="h-5 w-5" />,
+                    title: 'Research focus',
+                    subtitle: 'LLMs · RAG · NLP · Reinforcement Learning',
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <span className="p-2.5 rounded-lg bg-primary/10 text-primary shrink-0">
+                      {item.icon}
+                    </span>
+                    <div>
+                      <p className="font-medium leading-tight">{item.title}</p>
+                      <p className="text-sm text-muted-foreground mt-0.5">{item.subtitle}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>

@@ -1,62 +1,13 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import ProjectCard from '@/components/ProjectCard';
+import { featuredProjects } from '@/lib/projects';
 
 const ProjectsSection = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
-  
-  const projects = [
-    {
-      id: 9,
-      title: 'saLLMan — Step-aware LLM',
-      description: 'Progressively built Transformer architectures across 4 phases — from vanilla encoder-decoder to a 75M-parameter code LLM with RoPE, SwiGLU, RMSNorm, and FlashAttention. Applied GRPO reinforcement learning to align the model toward step-by-step DSA reasoning.',
-      image: 'sallman',
-      category: 'ML',
-      tags: ['PyTorch', 'LLM', 'GRPO', 'FlashAttention'],
-      demoLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
-      codeLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
-    },
-    {
-      id: 10,
-      title: 'Multimodal Document RAG',
-      description: 'Built a multi-format document Q&A system using hybrid FAISS + BM25 retrieval with cross-encoder re-ranking and multimodal ingestion (PDF, DOCX, images via GPT-4o-mini). Evaluated against FinanceBench with LLM-as-judge scoring.',
-      image: 'multimodal-rag',
-      category: 'ML',
-      tags: ['RAG', 'FAISS', 'BM25', 'Flask', 'GPT-4o'],
-      demoLink: 'https://github.com/SalmanAlfarisi5',
-      codeLink: 'https://github.com/SalmanAlfarisi5',
-    },
-    {
-      id: 12,
-      title: 'Twitter Bias Detector',
-      description: 'Fine-tuned DistilBERT with LoRA + Bayesian Optimization (OPTUNA) for 20% metric improvement over baseline. Built as a Chrome extension with FastAPI backend and Hugging Face inference.',
-      image: 'twitter-bias-detector',
-      category: 'ML',
-      tags: ['NLP', 'DistilBERT', 'LoRA', 'FastAPI', 'Chrome Extension'],
-      demoLink: 'https://github.com/SalmanAlfarisi5',
-      codeLink: 'https://github.com/SalmanAlfarisi5',
-    },
-    {
-      id: 3,
-      title: 'Stock Price Prediction',
-      description: 'Forecasted S&P 500 index closing prices by integrating historical market data with news sentiment analysis. Trained and tuned ensemble models (XGBoost, CatBoost) and recurrent architectures (RNN, GRU, LSTM).',
-      image: 'stock-price-prediction',
-      category: 'ML',
-      tags: ['Time Series', 'XGBoost', 'LSTM', 'Sentiment Analysis'],
-      demoLink: 'https://github.com/SalmanAlfarisi5/Stock-Price-Prediction',
-      codeLink: 'https://github.com/SalmanAlfarisi5/Stock-Price-Prediction',
-    },
-  ];
-  
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
-  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -66,20 +17,11 @@ const ProjectsSection = () => {
       },
     },
   };
-  
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
 
   return (
     <section id="projects" className="py-20 bg-background relative">
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,81 +30,26 @@ const ProjectsSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore a selection of my recent work, showcasing my expertise in
-            Machine Learning, Data Analysis, and Software Development.
+            A selection of my recent work, showcasing my expertise in
+            Machine Learning, LLMs, and Software Development.
           </p>
         </motion.div>
-        
-        <div className="flex justify-center mb-12">
-          <div className="flex space-x-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'ML'].map((filter) => (
-              <Button
-                key={filter}
-                variant={activeFilter === filter ? 'default' : 'ghost'}
-                className={`rounded-full capitalize ${activeFilter === filter ? '' : 'hover:bg-secondary/50'}`}
-                onClick={() => setActiveFilter(filter)}
-              >
-                {filter}
-              </Button>
-            ))}
-          </div>
-        </div>
-        
+
         <motion.div
-          key={activeFilter}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
-          {filteredProjects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <Card className="glass-card overflow-hidden group h-full flex flex-col">
-                <div className="relative overflow-hidden">
-                  <img  
-                    alt={`${project.title} project screenshot`}
-                    className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
-                   src="https://images.unsplash.com/photo-1694190614093-fd6d69af6327" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
-                    <div className="flex space-x-2">
-                      <Button size="icon" variant="secondary" className="rounded-full" asChild>
-                        <a href={project.demoLink} target="_blank" rel="noopener noreferrer" aria-label="View demo">
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </Button>
-                      <Button size="icon" variant="secondary" className="rounded-full" asChild>
-                        <a href={project.codeLink} target="_blank" rel="noopener noreferrer" aria-label="View code">
-                          <Github className="h-4 w-4" />
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <CardContent className="p-6 flex-grow flex flex-col">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, index) => (
-                      <Badge key={index} variant="secondary" className="font-normal">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <Button variant="ghost" className="self-start p-0 h-auto" asChild>
-                    <a href={project.demoLink} className="flex items-center text-primary hover:text-primary/80">
-                      View Project <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

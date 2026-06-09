@@ -69,12 +69,24 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="glass-card rounded-lg p-1">
-                <div className="bg-background rounded-md overflow-hidden">
-                  <img  
-                    alt="Developer workspace" 
-                    className="w-full h-auto rounded-md"
-                   src="https://images.unsplash.com/photo-1507146815454-9faa99d579aa" />
+              <div className="glass-card rounded-lg overflow-hidden shadow-xl">
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-secondary/40">
+                  <span className="w-3 h-3 rounded-full bg-red-400" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <span className="w-3 h-3 rounded-full bg-green-400" />
+                  <span className="ml-2 text-xs text-muted-foreground">salman — zsh</span>
+                </div>
+                <div className="p-5 font-mono text-sm leading-relaxed overflow-x-auto">
+                  <p><span className="text-primary">➜</span> <span className="text-muted-foreground">~</span> whoami</p>
+                  <p className="mb-3">muhammad salman al farisi</p>
+                  <p><span className="text-primary">➜</span> <span className="text-muted-foreground">~</span> cat focus.json</p>
+                  <pre className="mb-3 text-foreground/90 whitespace-pre-wrap">{`{
+  "research":  ["NLP", "Reinforcement Learning"],
+  "building":  ["LLMs", "RAG systems"],
+  "exploring": ["Quantitative Finance"]
+}`}</pre>
+                  <p><span className="text-primary">➜</span> <span className="text-muted-foreground">~</span> status</p>
+                  <p className="text-green-500">● open to new challenges &amp; opportunities</p>
                 </div>
               </div>
             </motion.div>
