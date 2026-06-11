@@ -11,6 +11,7 @@ export const projects = [
     tags: ['PyTorch', 'LLM', 'GRPO', 'FlashAttention'],
     demoLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
     codeLink: 'https://github.com/SalmanAlfarisi5/saLLMan',
+    internalLink: '/sallman',
     featured: true,
   },
   {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, Brain, Globe, Terminal, BarChart3 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ExternalLink, Github, ArrowRight, Sparkles, Brain, Globe, Terminal, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -64,16 +65,33 @@ const ProjectCard = ({ project }) => {
           <span className="absolute top-3 left-3 text-xs font-medium px-2.5 py-1 rounded-full bg-black/25 text-white backdrop-blur-sm">
             {label}
           </span>
+          {project.internalLink && (
+            <span className="absolute top-3 right-3 flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-black/25 text-white backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              Live demo
+            </span>
+          )}
           <Icon className="relative h-12 w-12 text-white/90" strokeWidth={1.5} />
 
           {/* Hover overlay with quick links */}
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
             <div className="flex space-x-2">
-              <Button size="icon" variant="secondary" className="rounded-full" asChild>
-                <a href={project.demoLink} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} demo`}>
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </Button>
+              {project.internalLink ? (
+                <Button size="icon" variant="secondary" className="rounded-full" asChild>
+                  <Link to={project.internalLink} aria-label={`Try the ${project.title} live demo`}>
+                    <Sparkles className="h-4 w-4" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button size="icon" variant="secondary" className="rounded-full" asChild>
+                  <a href={project.demoLink} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} demo`}>
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </Button>
+              )}
               <Button size="icon" variant="secondary" className="rounded-full" asChild>
                 <a href={project.codeLink} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code`}>
                   <Github className="h-4 w-4" />
@@ -93,16 +111,27 @@ const ProjectCard = ({ project }) => {
               </Badge>
             ))}
           </div>
-          <Button variant="ghost" className="self-start p-0 h-auto" asChild>
-            <a
-              href={project.demoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center text-primary hover:text-primary/80"
-            >
-              View Project <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
+          {project.internalLink ? (
+            <Button variant="ghost" className="self-start p-0 h-auto" asChild>
+              <Link
+                to={project.internalLink}
+                className="flex items-center text-primary hover:text-primary/80"
+              >
+                Try it live <Sparkles className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          ) : (
+            <Button variant="ghost" className="self-start p-0 h-auto" asChild>
+              <a
+                href={project.demoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-primary hover:text-primary/80"
+              >
+                View Project <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          )}
         </CardContent>
       </Card>
     </motion.div>
