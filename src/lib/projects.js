@@ -18,11 +18,12 @@ export const projects = [
     id: 10,
     title: 'Multimodal Document RAG',
     description:
-      'Built a multi-format document Q&A system using hybrid FAISS + BM25 retrieval with Reciprocal Rank Fusion and cross-encoder re-ranking, plus multimodal ingestion (PDF, DOCX, images via GPT-4o-mini). Evaluated against the FinanceBench benchmark with LLM-as-judge scoring.',
+      'A multi-format document Q&A system with three-way hybrid retrieval — BGE dense, numeric-aware BM25, and CLIP visual search fused via Reciprocal Rank Fusion — plus cross-encoder re-ranking. Charts and tables are fed to the VLM as real images at answer time, not just captions. Evaluated on FinanceBench with LLM-as-judge scoring.',
     category: 'ML',
-    tags: ['RAG', 'FAISS', 'BM25', 'Flask', 'GPT-4o'],
+    tags: ['RAG', 'CLIP', 'FAISS', 'BM25', 'Cross-Encoder', 'GPT-4o'],
     demoLink: 'https://github.com/SalmanAlfarisi5',
     codeLink: 'https://github.com/SalmanAlfarisi5',
+    internalLink: '/multimodal-rag',
     featured: true,
   },
   {

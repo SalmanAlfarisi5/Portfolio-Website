@@ -11,9 +11,10 @@ import About from '@/pages/About';
 import Projects from '@/pages/Projects';
 import Contact from '@/pages/Contact';
 
-// The saLLMan demo pulls in the Gradio client, so it's code-split and only
-// loaded when a visitor actually opens the page.
+// The interactive demos pull in the Gradio client, so they're code-split and
+// only loaded when a visitor actually opens the page.
 const SaLLMan = React.lazy(() => import('@/pages/SaLLMan'));
+const MultimodalRag = React.lazy(() => import('@/pages/MultimodalRag'));
 
 const PageLoader = () => (
   <div className="min-h-[60vh] flex items-center justify-center">
@@ -37,6 +38,14 @@ function App() {
               element={
                 <Suspense fallback={<PageLoader />}>
                   <SaLLMan />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/multimodal-rag"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <MultimodalRag />
                 </Suspense>
               }
             />
