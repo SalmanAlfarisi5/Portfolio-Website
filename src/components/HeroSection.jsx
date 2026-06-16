@@ -134,8 +134,8 @@ const HeroSection = () => {
           </motion.div>
         </div>
         
-        <motion.div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        <motion.div
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}

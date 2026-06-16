@@ -6,6 +6,9 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from '@/components/ThemeToggle';
 
+const navLinkFocus =
+  'rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -31,11 +34,30 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
+  // While the mobile menu is open: lock body scroll and close on Escape.
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const { overflow } = document.body.style;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = overflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
     { name: 'saLLMan', path: '/sallman' },
+    { name: 'RAG Demo', path: '/multimodal-rag' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -59,18 +81,18 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
+        <Link to="/" className={`flex items-center space-x-2 ${navLinkFocus}`}>
           <span className="text-2xl font-bold gradient-text">Salman Alfarisi</span>
         </Link>
 
         <div className="flex items-center gap-1 md:gap-2">
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 mr-4">
+          <nav className="hidden md:flex items-center space-x-6 mr-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                className={`relative text-sm font-medium transition-colors hover:text-primary ${navLinkFocus} ${
                   location.pathname === link.path ? 'text-primary' : 'text-foreground/80'
                 }`}
               >
@@ -97,25 +119,33 @@ const Navbar = () => {
             className="md:hidden"
             onClick={toggleMenu}
             aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </Button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — inert + hidden from a11y tree when closed so its links
+          are not focusable behind the page. */}
       <motion.div
+        id="mobile-menu"
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={mobileMenuVariants}
-        className="md:hidden fixed inset-y-0 right-0 w-full bg-background/95 backdrop-blur-lg z-40 shadow-xl"
+        aria-hidden={!isOpen}
+        {...(!isOpen && { inert: '' })}
+        className={`md:hidden fixed inset-y-0 right-0 w-full bg-background/95 backdrop-blur-lg z-40 shadow-xl ${
+          isOpen ? '' : 'pointer-events-none'
+        }`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 p-4">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-xl font-medium ${
+              className={`text-xl font-medium ${navLinkFocus} ${
                 location.pathname === link.path ? 'text-primary' : 'text-foreground/80'
               }`}
             >

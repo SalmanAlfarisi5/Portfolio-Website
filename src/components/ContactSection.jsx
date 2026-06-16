@@ -15,6 +15,7 @@ export default function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState('');
+  const [showMap, setShowMap] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +25,7 @@ export default function ContactSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setResult('Sending…');                       
+    setResult('Sending…');
 
     const data = new FormData(e.target);
     data.append('access_key', 'f7d7ef7a-524d-4308-97c8-561b559bf08f');
@@ -73,16 +74,18 @@ export default function ContactSection() {
       icon: <MapPin className="h-6 w-6" />,
       title: 'Location',
       value: 'Singapore',
-      link: '#',
+      link: null, // not a navigable destination — rendered as static info
     },
   ];
 
   const inputClasses = "w-full bg-secondary/30 border border-border/50 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all";
 
+  const cardClasses = "glass-card p-6 rounded-lg flex flex-col items-center text-center";
+
   return (
-    <section id="contact" className="py-20 bg-background relative">
+    <section id="contact" className="py-20 bg-secondary/20 relative">
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -98,27 +101,46 @@ export default function ContactSection() {
             I'm always open to new ideas and collaborations.
           </p>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {contactInfo.map((info, index) => (
-            <motion.a
-              key={index}
-              href={info.link}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card p-6 rounded-lg flex flex-col items-center text-center hover:bg-secondary/50 transition-colors"
-            >
-              <div className="p-4 rounded-full bg-primary/10 text-primary mb-4">
-                {info.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-2">{info.title}</h3>
-              <p className="text-muted-foreground">{info.value}</p>
-            </motion.a>
-          ))}
+          {contactInfo.map((info, index) => {
+            const inner = (
+              <>
+                <div className="p-4 rounded-full bg-primary/10 text-primary mb-4">
+                  {info.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{info.title}</h3>
+                <p className="text-muted-foreground">{info.value}</p>
+              </>
+            );
+
+            return info.link ? (
+              <motion.a
+                key={index}
+                href={info.link}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`${cardClasses} hover:bg-secondary/50 transition-colors`}
+              >
+                {inner}
+              </motion.a>
+            ) : (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={cardClasses}
+              >
+                {inner}
+              </motion.div>
+            );
+          })}
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -130,10 +152,13 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
+                  <label htmlFor="contact-name" className="sr-only">Your Name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
                     placeholder="Your Name"
+                    autoComplete="name"
                     required
                     className={inputClasses}
                     value={formData.name}
@@ -141,10 +166,13 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
+                  <label htmlFor="contact-email" className="sr-only">Your Email</label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     placeholder="Your Email"
+                    autoComplete="email"
                     required
                     className={inputClasses}
                     value={formData.email}
@@ -153,7 +181,9 @@ export default function ContactSection() {
                 </div>
               </div>
               <div>
+                <label htmlFor="contact-subject" className="sr-only">Subject</label>
                 <input
+                  id="contact-subject"
                   type="text"
                   name="subject"
                   placeholder="Subject"
@@ -164,7 +194,9 @@ export default function ContactSection() {
                 />
               </div>
               <div>
+                <label htmlFor="contact-message" className="sr-only">Your Message</label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   placeholder="Your Message"
                   rows="5"
@@ -174,9 +206,9 @@ export default function ContactSection() {
                   onChange={handleChange}
                 ></textarea>
               </div>
-              <Button 
-                type="submit" 
-                size="lg" 
+              <Button
+                type="submit"
+                size="lg"
                 className="rounded-full w-full md:w-auto"
                 disabled={isSubmitting}
               >
@@ -194,9 +226,12 @@ export default function ContactSection() {
                   </span>
                 )}
               </Button>
+              {result && (
+                <p className="sr-only" role="status" aria-live="polite">{result}</p>
+              )}
             </form>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -206,14 +241,29 @@ export default function ContactSection() {
           >
             <div className="glass-card rounded-lg p-1 h-full min-h-[320px]">
               <div className="bg-background rounded-md overflow-hidden h-full w-full">
-                <iframe
-                  title="Map showing Singapore"
-                  src="https://www.google.com/maps?q=National%20University%20of%20Singapore&z=11&output=embed"
-                  className="w-full h-full min-h-[320px] rounded-md border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
+                {showMap ? (
+                  <iframe
+                    title="Map showing National University of Singapore"
+                    src="https://www.google.com/maps?q=National%20University%20of%20Singapore&z=11&output=embed"
+                    className="w-full h-full min-h-[320px] rounded-md border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setShowMap(true)}
+                    className="group w-full h-full min-h-[320px] flex flex-col items-center justify-center gap-3 text-center p-6 hover:bg-secondary/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+                    aria-label="Load interactive map of National University of Singapore"
+                  >
+                    <span className="p-4 rounded-full bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                      <MapPin className="h-6 w-6" />
+                    </span>
+                    <span className="font-medium">National University of Singapore</span>
+                    <span className="text-sm text-muted-foreground">Click to load the interactive map</span>
+                  </button>
+                )}
               </div>
             </div>
           </motion.div>
@@ -222,4 +272,3 @@ export default function ContactSection() {
     </section>
   );
 };
-

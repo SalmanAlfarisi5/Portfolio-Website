@@ -1,7 +1,7 @@
 
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -24,6 +24,7 @@ const PageLoader = () => (
 
 function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <ScrollToTop />
       <Navbar />
@@ -55,6 +56,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </MotionConfig>
   );
 }
 

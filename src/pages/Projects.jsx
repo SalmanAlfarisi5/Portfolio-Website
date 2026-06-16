@@ -4,8 +4,20 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/lib/projects';
+import usePageMeta from '@/lib/usePageMeta';
+
+// Filter values map 1:1 to project.category; labels are spelled out so the
+// chips read the same as the category badges on the cards (e.g. dev → Software).
+const filters = [
+  { value: 'all', label: 'All' },
+  { value: 'ML', label: 'Machine Learning' },
+  { value: 'web', label: 'Web' },
+  { value: 'dev', label: 'Software' },
+  { value: 'Analysis', label: 'Analysis' },
+];
 
 const Projects = () => {
+  usePageMeta('Projects', 'Projects by Muhammad Salman Al Farisi across Machine Learning, LLMs, Computer Vision, NLP, Quantitative Finance, and Software Development.');
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filteredProjects = activeFilter === 'all'
@@ -47,30 +59,43 @@ const Projects = () => {
 
         <div className="flex justify-center mb-12">
           <div className="flex flex-wrap justify-center gap-2 p-1 bg-secondary/30 rounded-full">
-            {['all', 'ML', 'web', 'dev', 'Analysis'].map((filter) => (
+            {filters.map((filter) => (
               <Button
-                key={filter}
-                variant={activeFilter === filter ? 'default' : 'ghost'}
-                className={`rounded-full capitalize ${activeFilter === filter ? '' : 'hover:bg-secondary/50'}`}
-                onClick={() => setActiveFilter(filter)}
+                key={filter.value}
+                variant={activeFilter === filter.value ? 'default' : 'ghost'}
+                className={`rounded-full ${activeFilter === filter.value ? '' : 'hover:bg-secondary/50'}`}
+                onClick={() => setActiveFilter(filter.value)}
               >
-                {filter}
+                {filter.label}
               </Button>
             ))}
           </div>
         </div>
 
-        <motion.div
-          key={activeFilter}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </motion.div>
+        {filteredProjects.length > 0 ? (
+          <motion.div
+            key={activeFilter}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </motion.div>
+        ) : (
+          <div className="text-center py-20 text-muted-foreground">
+            <p className="text-lg">No projects in this category yet.</p>
+            <Button
+              variant="link"
+              className="mt-2 text-primary"
+              onClick={() => setActiveFilter('all')}
+            >
+              View all projects
+            </Button>
+          </div>
+        )}
       </div>
     </motion.div>
   );

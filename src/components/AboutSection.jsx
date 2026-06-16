@@ -1,11 +1,15 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Briefcase, GraduationCap, Trophy, BrainCircuit } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Code, Briefcase, GraduationCap, Trophy, BrainCircuit, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
-const AboutSection = () => {
+// `condensed` renders a teaser (used on the Home page): highlights + a CTA to
+// the full /about page. The full version (used on /about) adds the journey
+// narrative and the Skills / Experience / Education tabs.
+const AboutSection = ({ condensed = false }) => {
   const fadeInUpVariant = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
@@ -18,15 +22,37 @@ const AboutSection = () => {
     }),
   };
 
-  const skills = [
-    { name: 'Python', level: 95 },
-    { name: 'PyTorch', level: 85 },
-    { name: 'HuggingFace / LLMs', level: 85 },
-    { name: 'SQL', level: 85 },
-    { name: 'RAG / FAISS', level: 80 },
-    { name: 'LangChain', level: 80 },
-    { name: 'FastAPI / Flask', level: 75 },
-    { name: 'Java', level: 75 },
+  // Grouped, resume-accurate skills. Self-assigned proficiency percentages were
+  // removed in favour of categorised competencies that read more credibly.
+  const skillGroups = [
+    { name: 'Languages', items: ['Python', 'SQL', 'R', 'Java', 'C'] },
+    { name: 'ML & Deep Learning', items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'HuggingFace', 'LoRA / PEFT', 'Mamba / SSM', 'SHAP'] },
+    { name: 'NLP & Generative AI', items: ['RAG', 'FAISS', 'BM25', 'Cross-Encoder Re-ranking', 'LangChain', 'LLM-as-Judge', 'SFT'] },
+    { name: 'Web & MLOps', items: ['FastAPI', 'Flask', 'ReactJS', 'Streamlit', 'Docker', 'Git & GitHub'] },
+    { name: 'Data & Visualization', items: ['Pandas', 'NumPy', 'PostgreSQL', 'MySQL', 'Matplotlib', 'PowerBI'] },
+  ];
+
+  const highlights = [
+    {
+      icon: <GraduationCap className="h-5 w-5" />,
+      title: 'B.Sc. Data Science & Analytics @ NUS',
+      subtitle: 'GPA 4.64 / 5.00 · CS Double Major (AI) · Quant Finance Minor',
+    },
+    {
+      icon: <Trophy className="h-5 w-5" />,
+      title: 'Top student in Data Structures & Algorithms',
+      subtitle: 'Highest cumulative score among 616 students',
+    },
+    {
+      icon: <Briefcase className="h-5 w-5" />,
+      title: '6 Data Science & ML roles',
+      subtitle: 'ShopBack · Astra International · NHG · Mitra Taxindo · VetBuddy · NUS',
+    },
+    {
+      icon: <BrainCircuit className="h-5 w-5" />,
+      title: 'Research focus',
+      subtitle: 'LLMs · RAG · NLP · Reinforcement Learning',
+    },
   ];
 
   const experiences = [
@@ -83,11 +109,31 @@ const AboutSection = () => {
       period: '2020 - 2023',
       description: 'Represented school in various Mathematics competitions and Olympiads, and organized events on many occasions.',
     },
-
   ];
 
+  const HighlightsCard = (
+    <div className="glass-card rounded-lg p-6 sm:p-8 h-full">
+      <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
+        <span className="w-2 h-2 rounded-full bg-primary" /> Quick Highlights
+      </h3>
+      <div className="space-y-5">
+        {highlights.map((item, i) => (
+          <div key={i} className="flex items-start gap-4">
+            <span className="p-2.5 rounded-lg bg-primary/10 text-primary shrink-0">
+              {item.icon}
+            </span>
+            <div>
+              <p className="font-medium leading-tight">{item.title}</p>
+              <p className="text-sm text-muted-foreground mt-0.5">{item.subtitle}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <section id="about" className="py-20 bg-background relative">
+    <section id="about" className="py-20 bg-secondary/20 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,185 +150,178 @@ const AboutSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="glass-card rounded-lg p-6 sm:p-8">
-              <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-primary" /> Quick Highlights
-              </h3>
-              <div className="space-y-5">
-                {[
-                  {
-                    icon: <GraduationCap className="h-5 w-5" />,
-                    title: 'B.Sc. Data Science & Analytics @ NUS',
-                    subtitle: 'GPA 4.64 / 5.00 · CS Double Major (AI) · Quant Finance Minor',
-                  },
-                  {
-                    icon: <Trophy className="h-5 w-5" />,
-                    title: 'Top student in Data Structures & Algorithms',
-                    subtitle: 'Highest cumulative score among 616 students',
-                  },
-                  {
-                    icon: <Briefcase className="h-5 w-5" />,
-                    title: '6 Data Science & ML roles',
-                    subtitle: 'ShopBack · Astra International · NHG · VetBuddy · NUS',
-                  },
-                  {
-                    icon: <BrainCircuit className="h-5 w-5" />,
-                    title: 'Research focus',
-                    subtitle: 'LLMs · RAG · NLP · Reinforcement Learning',
-                  },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <span className="p-2.5 rounded-lg bg-primary/10 text-primary shrink-0">
-                      {item.icon}
-                    </span>
-                    <div>
-                      <p className="font-medium leading-tight">{item.title}</p>
-                      <p className="text-sm text-muted-foreground mt-0.5">{item.subtitle}</p>
+        {condensed ? (
+          /* Home teaser: highlights + CTA to the full About page */
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              {HighlightsCard}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-center mt-10"
+            >
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                More about my journey, skills & experience <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative"
+              >
+                {HighlightsCard}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h3 className="text-2xl font-bold mb-4">My Journey</h3>
+                <p className="text-muted-foreground mb-6">
+                  I've completed multiple projects and internships spanning Data Science, Machine Learning, and Software Development — building LLMs from scratch, multimodal RAG systems, NLP classifiers, forecasting models, and full-stack applications.
+                  My passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040),
+                  and I now serve as a Teaching Assistant for both CS2040 and IT1244 (AI & Machine Learning).
+                </p>
+                <p className="text-muted-foreground mb-6">
+                  I believe in continuous learning and staying current with the latest machine learning frameworks
+                  and data analysis best practices. Having applied machine learning across various domains including healthcare and finance,
+                  I remain eager to explore new challenges and opportunities.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {['Python', 'PyTorch', 'HuggingFace', 'LangChain', 'RAG / FAISS', 'FastAPI'].map((tag, index) => (
+                    <motion.span
+                      key={index}
+                      custom={index}
+                      variants={fadeInUpVariant}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      className="px-3 py-1 bg-secondary/50 rounded-full text-sm"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            <Tabs defaultValue="skills" className="w-full">
+              <TabsList className="grid w-full grid-cols-3 mb-8">
+                <TabsTrigger value="skills" className="flex items-center gap-2">
+                  <Code className="h-4 w-4" /> Skills
+                </TabsTrigger>
+                <TabsTrigger value="experience" className="flex items-center gap-2">
+                  <Briefcase className="h-4 w-4" /> Experience
+                </TabsTrigger>
+                <TabsTrigger value="education" className="flex items-center gap-2">
+                  <GraduationCap className="h-4 w-4" /> Education
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="skills" className="space-y-6">
+                {skillGroups.map((group, index) => (
+                  <motion.div
+                    key={group.name}
+                    custom={index}
+                    variants={fadeInUpVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+                      {group.name}
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="px-3 py-1.5 rounded-lg bg-secondary/50 text-sm font-medium border border-border/50"
+                        >
+                          {item}
+                        </span>
+                      ))}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
-          </motion.div>
+              </TabsContent>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-2xl font-bold mb-4">My Journey</h3>
-            <p className="text-muted-foreground mb-6">
-              I've completed multiple projects and internships spanning Data Science, Machine Learning, and Software Development — building LLMs from scratch, multimodal RAG systems, NLP classifiers, forecasting models, and full-stack applications.
-              My passion for algorithms was recognized when I ranked top out of 616 students in Data Structures & Algorithms (CS2040),
-              and I now serve as a Teaching Assistant for both CS2040 and IT1244 (AI & Machine Learning).
-            </p>
-            <p className="text-muted-foreground mb-6">
-              I believe in continuous learning and staying current with the latest machine learning frameworks
-              and data analysis best practices. Having applied machine learning across various domains including healthcare and finance,
-              I remain eager to explore new challenges and opportunities.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {['Python', 'PyTorch', 'HuggingFace', 'LangChain', 'RAG / FAISS', 'FastAPI'].map((tag, index) => (
-                <motion.span
-                  key={index}
-                  custom={index}
-                  variants={fadeInUpVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="px-3 py-1 bg-secondary/50 rounded-full text-sm"
-                >
-                  {tag}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+              <TabsContent value="experience" className="space-y-6">
+                {experiences.map((exp, index) => (
+                  <motion.div
+                    key={index}
+                    custom={index}
+                    variants={fadeInUpVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    <Card className="glass-card overflow-hidden">
+                      <CardContent className="p-6">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                          <div>
+                            <h4 className="text-xl font-bold">{exp.title}</h4>
+                            <p className="text-primary">{exp.company}</p>
+                          </div>
+                          <span className="text-sm text-muted-foreground mt-2 md:mt-0 px-3 py-1 bg-secondary/30 rounded-full">
+                            {exp.period}
+                          </span>
+                        </div>
+                        <p className="text-muted-foreground">{exp.description}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </TabsContent>
 
-        <Tabs defaultValue="skills" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="skills" className="flex items-center gap-2">
-              <Code className="h-4 w-4" /> Skills
-            </TabsTrigger>
-            <TabsTrigger value="experience" className="flex items-center gap-2">
-              <Briefcase className="h-4 w-4" /> Experience
-            </TabsTrigger>
-            <TabsTrigger value="education" className="flex items-center gap-2">
-              <GraduationCap className="h-4 w-4" /> Education
-            </TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="skills" className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  custom={index}
-                  variants={fadeInUpVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-secondary/30 rounded-full h-2.5">
-                    <div 
-                      className="bg-primary h-2.5 rounded-full" 
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="experience" className="space-y-6">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                variants={fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <Card className="glass-card overflow-hidden">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                      <div>
-                        <h4 className="text-xl font-bold">{exp.title}</h4>
-                        <p className="text-primary">{exp.company}</p>
-                      </div>
-                      <span className="text-sm text-muted-foreground mt-2 md:mt-0 px-3 py-1 bg-secondary/30 rounded-full">
-                        {exp.period}
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground">{exp.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </TabsContent>
-          
-          <TabsContent value="education" className="space-y-6">
-            {education.map((edu, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                variants={fadeInUpVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <Card className="glass-card overflow-hidden">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                      <div>
-                        <h4 className="text-xl font-bold">{edu.degree}</h4>
-                        <p className="text-primary">{edu.institution}</p>
-                      </div>
-                      <span className="text-sm text-muted-foreground mt-2 md:mt-0 px-3 py-1 bg-secondary/30 rounded-full">
-                        {edu.period}
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground">{edu.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </TabsContent>
-        </Tabs>
+              <TabsContent value="education" className="space-y-6">
+                {education.map((edu, index) => (
+                  <motion.div
+                    key={index}
+                    custom={index}
+                    variants={fadeInUpVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    <Card className="glass-card overflow-hidden">
+                      <CardContent className="p-6">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                          <div>
+                            <h4 className="text-xl font-bold">{edu.degree}</h4>
+                            <p className="text-primary">{edu.institution}</p>
+                          </div>
+                          <span className="text-sm text-muted-foreground mt-2 md:mt-0 px-3 py-1 bg-secondary/30 rounded-full">
+                            {edu.period}
+                          </span>
+                        </div>
+                        <p className="text-muted-foreground">{edu.description}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </TabsContent>
+            </Tabs>
+          </>
+        )}
       </div>
     </section>
   );

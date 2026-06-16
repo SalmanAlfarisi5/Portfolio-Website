@@ -3,8 +3,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Globe, Trophy, Bike } from 'lucide-react';
 import AboutSection from '@/components/AboutSection';
+import usePageMeta from '@/lib/usePageMeta';
 
 const About = () => {
+  usePageMeta('About', 'About Muhammad Salman Al Farisi — NUS Data Science & Analytics student. Background, skills, work experience, and education in ML, LLMs, and software development.');
   return (
     <motion.div
       initial={{ opacity: 0 }}

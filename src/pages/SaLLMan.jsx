@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SaLLManDemo from '@/components/SaLLManDemo';
 import { REPO_URL, SPACE_PAGE_URL } from '@/lib/sallman';
+import usePageMeta from '@/lib/usePageMeta';
 
 const stats = [
   { value: '97M', label: 'Parameters', Icon: Cpu },
@@ -56,6 +57,7 @@ const fadeUp = {
 };
 
 const SaLLMan = () => {
+  usePageMeta('saLLMan — Step-aware LLM', 'saLLMan: a decoder-only LLM built from scratch in PyTorch (RoPE, SwiGLU, FlashAttention) and aligned with GRPO for step-by-step DSA reasoning. Try the live demo.');
   return (
     <motion.div
       initial={{ opacity: 0 }}

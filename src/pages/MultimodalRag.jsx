@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import MultimodalRagDemo from '@/components/MultimodalRagDemo';
 import { REPO_URL, SPACE_PAGE_URL } from '@/lib/multimodalRag';
+import usePageMeta from '@/lib/usePageMeta';
 
 const stats = [
   { value: '3-way', label: 'Hybrid retrieval (dense + BM25 + CLIP)', Icon: Layers },
@@ -49,6 +50,7 @@ const fadeUp = {
 };
 
 const MultimodalRag = () => {
+  usePageMeta('Multimodal Document RAG', 'A multi-format document Q&A system with three-way hybrid retrieval (dense + BM25 + CLIP), cross-encoder re-ranking, and chart-aware VLM answering. Try the live demo.');
   return (
     <motion.div
       initial={{ opacity: 0 }}

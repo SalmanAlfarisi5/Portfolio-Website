@@ -5,8 +5,10 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
+import usePageMeta from '@/lib/usePageMeta';
 
 const Home = () => {
+  usePageMeta(null);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,7 +17,7 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
       <HeroSection />
-      <AboutSection />
+      <AboutSection condensed />
       <ProjectsSection />
       <ContactSection />
     </motion.div>

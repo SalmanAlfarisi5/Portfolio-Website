@@ -43,6 +43,18 @@ const ProjectCard = ({ project }) => {
   const meta = categoryMeta[project.category] || categoryMeta.dev;
   const { Icon, label } = meta;
 
+  const { internalLink, live, repo } = project;
+  const hasDemo = Boolean(internalLink || live);
+
+  // The single most prominent action shown in the card footer.
+  const primaryCta = internalLink
+    ? { type: 'internal', to: internalLink, text: 'Try it live', icon: Sparkles }
+    : live
+    ? { type: 'external', href: live, text: 'View Demo', icon: ExternalLink }
+    : repo
+    ? { type: 'external', href: repo, text: 'View Code', icon: ArrowRight }
+    : null;
+
   return (
     <motion.div variants={itemVariants} className="h-full">
       <Card className="glass-card overflow-hidden group h-full flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
@@ -65,7 +77,7 @@ const ProjectCard = ({ project }) => {
           <span className="absolute top-3 left-3 text-xs font-medium px-2.5 py-1 rounded-full bg-black/25 text-white backdrop-blur-sm">
             {label}
           </span>
-          {project.internalLink && (
+          {internalLink && (
             <span className="absolute top-3 right-3 flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-black/25 text-white backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -76,29 +88,33 @@ const ProjectCard = ({ project }) => {
           )}
           <Icon className="relative h-12 w-12 text-white/90" strokeWidth={1.5} />
 
-          {/* Hover overlay with quick links */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
-            <div className="flex space-x-2">
-              {project.internalLink ? (
-                <Button size="icon" variant="secondary" className="rounded-full" asChild>
-                  <Link to={project.internalLink} aria-label={`Try the ${project.title} live demo`}>
-                    <Sparkles className="h-4 w-4" />
-                  </Link>
-                </Button>
-              ) : (
-                <Button size="icon" variant="secondary" className="rounded-full" asChild>
-                  <a href={project.demoLink} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} demo`}>
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </Button>
-              )}
-              <Button size="icon" variant="secondary" className="rounded-full" asChild>
-                <a href={project.codeLink} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code`}>
-                  <Github className="h-4 w-4" />
-                </a>
-              </Button>
+          {/* Hover overlay with quick links (only those that exist) */}
+          {(hasDemo || repo) && (
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
+              <div className="flex space-x-2">
+                {internalLink ? (
+                  <Button size="icon" variant="secondary" className="rounded-full" asChild>
+                    <Link to={internalLink} aria-label={`Try the ${project.title} live demo`}>
+                      <Sparkles className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                ) : live ? (
+                  <Button size="icon" variant="secondary" className="rounded-full" asChild>
+                    <a href={live} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} demo`}>
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </Button>
+                ) : null}
+                {repo && (
+                  <Button size="icon" variant="secondary" className="rounded-full" asChild>
+                    <a href={repo} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} code on GitHub`}>
+                      <Github className="h-4 w-4" />
+                    </a>
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <CardContent className="p-6 flex-grow flex flex-col">
@@ -111,25 +127,25 @@ const ProjectCard = ({ project }) => {
               </Badge>
             ))}
           </div>
-          {project.internalLink ? (
+          {primaryCta && (
             <Button variant="ghost" className="self-start p-0 h-auto" asChild>
-              <Link
-                to={project.internalLink}
-                className="flex items-center text-primary hover:text-primary/80"
-              >
-                Try it live <Sparkles className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          ) : (
-            <Button variant="ghost" className="self-start p-0 h-auto" asChild>
-              <a
-                href={project.demoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-primary hover:text-primary/80"
-              >
-                View Project <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              {primaryCta.type === 'internal' ? (
+                <Link
+                  to={primaryCta.to}
+                  className="flex items-center text-primary hover:text-primary/80"
+                >
+                  {primaryCta.text} <primaryCta.icon className="ml-2 h-4 w-4" />
+                </Link>
+              ) : (
+                <a
+                  href={primaryCta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-primary hover:text-primary/80"
+                >
+                  {primaryCta.text} <primaryCta.icon className="ml-2 h-4 w-4" />
+                </a>
+              )}
             </Button>
           )}
         </CardContent>
