@@ -94,8 +94,14 @@ const HeroSection = () => {
             <div className="relative w-full aspect-square max-w-md mx-auto animated-border">
               <div className="absolute inset-[3px] bg-background rounded-[calc(var(--radius)-3px)] z-10 flex flex-col items-center justify-center text-center p-8 gap-5">
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-4xl font-bold text-white shadow-lg shadow-primary/30">
-                    MS
+                  <div className="w-32 h-32 rounded-full p-[3px] bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg shadow-primary/30">
+                    <img
+                      src="/headshot.webp"
+                      alt="Muhammad Salman Al Farisi"
+                      width="128"
+                      height="128"
+                      className="w-full h-full rounded-full object-cover"
+                    />
                   </div>
                   <span className="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-green-500 border-4 border-background" title="Open to opportunities" />
                 </div>
