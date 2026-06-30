@@ -65,7 +65,13 @@ function emitStatus(status) {
 
 function getClient() {
   if (!clientPromise) {
-    clientPromise = Client.connect(SPACE_ID, { status_callback: emitStatus }).catch((err) => {
+    // Connect via the direct *.hf.space app URL rather than the "owner/space"
+    // ID. Given an ID, @gradio/client first resolves the host through
+    // https://huggingface.co/api/spaces/<id>/host — an extra hop that, from a
+    // visitor's browser, is frequently rate-limited (HTTP 429) or blocked,
+    // making connect() throw "Space metadata could not be loaded." The app URL
+    // points straight at the running Space and skips that lookup entirely.
+    clientPromise = Client.connect(SPACE_APP_URL, { status_callback: emitStatus }).catch((err) => {
       clientPromise = null;
       throw err;
     });
