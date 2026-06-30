@@ -19,6 +19,8 @@ import {
   generateSolution,
   parseModelOutput,
   isColdStart,
+  warmUp,
+  subscribeStatus,
   DEFAULTS,
   EXAMPLE_PROMPTS,
   SPACE_PAGE_URL,
@@ -27,9 +29,13 @@ import {
 const inputClasses =
   'w-full bg-secondary/30 border border-border/50 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all';
 
-// Once a request runs longer than this we assume the Space is cold-starting and
-// switch to the friendlier "waking up" copy, even if it isn't the first call.
-const COLD_THRESHOLD_SECONDS = 15;
+// Fallback: once a request runs longer than this we assume the Space is
+// cold-starting and switch to the friendlier "waking up" copy, even if the
+// Space hasn't reported a wake/build status. A free CPU boot can take a minute+.
+const COLD_THRESHOLD_SECONDS = 20;
+
+// Space statuses that mean it's still coming up (vs. already serving requests).
+const BOOTING_STATUSES = new Set(['sleeping', 'building', 'starting']);
 
 const SaLLManDemo = () => {
   const [problem, setProblem] = useState('');
@@ -43,6 +49,7 @@ const SaLLManDemo = () => {
   const [error, setError] = useState('');
   const [elapsed, setElapsed] = useState(0);
   const [cold, setCold] = useState(false);
+  const [spaceStatus, setSpaceStatus] = useState(null);
 
   const textareaRef = useRef(null);
   const timerRef = useRef(null);
@@ -50,8 +57,17 @@ const SaLLManDemo = () => {
   // Clean up the elapsed-time interval on unmount.
   useEffect(() => () => clearInterval(timerRef.current), []);
 
+  // Begin waking the (free-tier) Space as soon as the demo mounts, so the
+  // cold-start boot overlaps with the user reading and typing rather than
+  // starting only on submit. Also track wake/build progress for nicer copy.
+  useEffect(() => {
+    warmUp();
+    return subscribeStatus(setSpaceStatus);
+  }, []);
+
   const loading = status === 'loading';
-  const showColdMessage = cold || elapsed >= COLD_THRESHOLD_SECONDS;
+  const spaceBooting = !!spaceStatus && BOOTING_STATUSES.has(spaceStatus.status);
+  const showColdMessage = spaceBooting || cold || elapsed >= COLD_THRESHOLD_SECONDS;
 
   const fillExample = (text) => {
     setProblem(text);
@@ -260,7 +276,9 @@ const SaLLManDemo = () => {
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
                   {showColdMessage
-                    ? 'The Space spins down when idle, so the first run can take ~30s. Hang tight.'
+                    ? spaceBooting && spaceStatus?.message
+                      ? spaceStatus.message
+                      : 'The Space spins down when idle, so the first run can take a minute or two while it wakes. Hang tight.'
                     : 'A warm run usually takes 5–10 seconds.'}
                   {elapsed > 0 && <span className="tabular-nums"> · {elapsed}s</span>}
                 </p>

@@ -34,9 +34,38 @@ export const EXAMPLE_PROMPTS = Object.freeze([
 // reuse it across requests. Reset the cache if a connection attempt fails so a
 // later retry can start fresh.
 let clientPromise = null;
+
+// While a sleeping Space cold-starts, the Gradio client reports wake/build
+// progress through a status callback. We fan those updates out to any UI
+// subscribers and remember the latest one, so a late subscriber still sees the
+// current state. Shape: @gradio/client SpaceStatus ({ status, detail, message }).
+const statusListeners = new Set();
+let lastStatus = null;
+
+/**
+ * Subscribe to Space connection status updates. Immediately replays the most
+ * recent status, if any. Returns an unsubscribe function.
+ */
+export function subscribeStatus(listener) {
+  statusListeners.add(listener);
+  if (lastStatus) listener(lastStatus);
+  return () => statusListeners.delete(listener);
+}
+
+function emitStatus(status) {
+  lastStatus = status;
+  for (const listener of statusListeners) {
+    try {
+      listener(status);
+    } catch {
+      /* a broken listener must not break the connection */
+    }
+  }
+}
+
 function getClient() {
   if (!clientPromise) {
-    clientPromise = Client.connect(SPACE_ID).catch((err) => {
+    clientPromise = Client.connect(SPACE_ID, { status_callback: emitStatus }).catch((err) => {
       clientPromise = null;
       throw err;
     });
@@ -44,9 +73,19 @@ function getClient() {
   return clientPromise;
 }
 
+// Eagerly start connecting to (and, if needed, waking) the Space. Safe to call
+// repeatedly and early — e.g. on page mount — so the cold-start boot overlaps
+// with the user reading the page and typing instead of starting on submit.
+export function warmUp() {
+  getClient().catch(() => {
+    /* the error is surfaced later, when the user actually submits */
+  });
+}
+
 // Track whether the model has answered at least once this session. The first
-// request of a session may cold-start the Space (~30–60s), so the UI shows a
-// friendlier "waking the model up" message until we've seen one response.
+// request of a session may cold-start the Space (a free CPU boot can take a
+// minute or more), so the UI shows a friendlier "waking the model up" message
+// until we've seen one response.
 let warmedUp = false;
 export function isColdStart() {
   return !warmedUp;
