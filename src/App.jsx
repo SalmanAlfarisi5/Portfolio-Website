@@ -15,6 +15,7 @@ import Contact from '@/pages/Contact';
 // only loaded when a visitor actually opens the page.
 const SaLLMan = React.lazy(() => import('@/pages/SaLLMan'));
 const MultimodalRag = React.lazy(() => import('@/pages/MultimodalRag'));
+const OCR = React.lazy(() => import('@/pages/OCR'));
 
 const PageLoader = () => (
   <div className="min-h-[60vh] flex items-center justify-center">
@@ -47,6 +48,14 @@ function App() {
               element={
                 <Suspense fallback={<PageLoader />}>
                   <MultimodalRag />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/ocr"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <OCR />
                 </Suspense>
               }
             />

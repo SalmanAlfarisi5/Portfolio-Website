@@ -34,6 +34,17 @@ export const projects = [
     featured: true,
   },
   {
+    id: 18,
+    title: 'OCR from Scratch — Detection + Recognition',
+    description:
+      'A complete deep-learning OCR system with no OCR library involved: DBNet (ResNet-18 + FPN with differentiable binarization) locates every word, and a CRNN + CTC recognizer reads it — trained without a single character-level label. Both networks train entirely on synthetic pages and word crops the project renders for itself, reaching 97.8% detection H-mean and 97.5% word accuracy, and transcribing the sample receipt, report and sign at 0% character error end to end.',
+    category: 'ML',
+    tags: ['PyTorch', 'DBNet', 'CRNN', 'CTC Loss', 'Computer Vision', 'FastAPI'],
+    repo: `${GH}/ocr`,
+    internalLink: '/ocr',
+    featured: true,
+  },
+  {
     id: 17,
     title: 'NVIDIA Nemotron Reasoning Challenge',
     description:
